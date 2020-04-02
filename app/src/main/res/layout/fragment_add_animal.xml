@@ -35,7 +35,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_add_title" />
 
-        <Spinner
+        <EditText
             android:id="@+id/editText_add_name"
             android:layout_width="0dp"
             android:layout_height="40dp"
@@ -44,7 +44,6 @@
             android:ems="10"
             android:text="@={addAnimalViewModel.editTextName}"
             android:hint="name"
-            android:entries="@{addAnimalViewModel.animalList}"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView_add_name"

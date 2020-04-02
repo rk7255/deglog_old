@@ -18,7 +18,7 @@ interface ProfileDatabaseDao {
     fun getProfile(key: String) : Profile?
 
     @Query("SELECT * FROM animal_profiles")
-    fun getProfiles() : List<Profile>
+    fun getProfiles() : LiveData<List<Profile>>
 
     @Query("DELETE FROM animal_profiles")
     fun clearAll()

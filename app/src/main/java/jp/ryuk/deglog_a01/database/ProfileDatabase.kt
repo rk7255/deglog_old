@@ -17,7 +17,7 @@ abstract class ProfileDatabase: RoomDatabase() {
 
         fun getInstance(context: Context): ProfileDatabase {
             return INSTANCE ?: synchronized(this) {
-                var instance = Room.databaseBuilder(
+                val instance = Room.databaseBuilder(
                     context.applicationContext,
                     ProfileDatabase::class.java,
                     "profile_database"
