@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="addAnimalViewModel"
+            type="jp.ryuk.deglog_a01.addanimal.AddAnimalViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".addanimal.AddAnimalFragment">
+
+        <TextView
+            android:id="@+id/textView_add_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="追加"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_add_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:text="名前"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_add_title" />
+
+        <Spinner
+            android:id="@+id/editText_add_name"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="32dp"
+            android:ems="10"
+            android:text="@={addAnimalViewModel.editTextName}"
+            android:hint="name"
+            android:entries="@{addAnimalViewModel.animalList}"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView_add_name"
+            app:layout_constraintTop_toTopOf="@+id/textView_add_name" />
+
+        <TextView
+            android:id="@+id/textView_add_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="体重"
+            app:layout_constraintStart_toStartOf="@+id/textView_add_name"
+            app:layout_constraintTop_toBottomOf="@+id/textView_add_name" />
+
+        <EditText
+            android:id="@+id/editText_add_weight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="32dp"
+            android:ems="10"
+            android:text="@={addAnimalViewModel.editTextWeight}"
+            android:hint="weight"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView_add_weight"
+            app:layout_constraintTop_toTopOf="@+id/textView_add_weight" />
+
+        <TextView
+            android:id="@+id/textView_add_length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="体長"
+            app:layout_constraintStart_toStartOf="@+id/textView_add_weight"
+            app:layout_constraintTop_toBottomOf="@+id/textView_add_weight" />
+
+        <EditText
+            android:id="@+id/editText_add_length"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="32dp"
+            android:ems="10"
+            android:text="@={addAnimalViewModel.editTextLength}"
+            android:hint="length"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView_add_length"
+            app:layout_constraintTop_toTopOf="@+id/textView_add_length" />
+
+        <TextView
+            android:id="@+id/textView_add_memo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="メモ"
+            app:layout_constraintStart_toStartOf="@+id/textView_add_length"
+            app:layout_constraintTop_toBottomOf="@+id/textView_add_length" />
+
+        <EditText
+            android:id="@+id/editText_add_memo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="32dp"
+            android:ems="10"
+            android:text="@={addAnimalViewModel.editTextMemo}"
+            android:gravity="start|top"
+            android:hint="memo"
+            android:inputType="textMultiLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView_add_memo"
+            app:layout_constraintTop_toTopOf="@+id/textView_add_memo" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:onClick="@{() -> addAnimalViewModel.addNewAnimal()}"
+            android:text="OK"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_add_memo" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

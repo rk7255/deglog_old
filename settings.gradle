@@ -1,0 +1,2 @@
+rootProject.name='deglog_a01'
+include ':app'
