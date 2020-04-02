@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="jp.ryuk.deglog_a01.addprofile.AddProfileViewModel" />
@@ -110,15 +111,16 @@
             app:layout_constraintEnd_toStartOf="@+id/button5"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner_year" />
+            app:layout_constraintTop_toBottomOf="@+id/editText_birthday" />
 
         <ScrollView
             android:id="@+id/scrollView2"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button3">
 
             <TextView
                 android:id="@+id/textView7"
@@ -139,72 +141,18 @@
             app:layout_constraintStart_toEndOf="@+id/button3"
             app:layout_constraintTop_toTopOf="@+id/button3" />
 
-        <Spinner
-            android:id="@+id/spinner_year"
-            android:layout_width="120dp"
-            android:layout_height="44dp"
-            android:layout_marginTop="16dp"
-            android:entries="@{viewModel.yearBySpinner}"
-            app:layout_constraintEnd_toStartOf="@+id/textView8"
-            app:layout_constraintHorizontal_bias="0.5"
+        <EditText
+            android:id="@+id/editText_birthday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:focusable="false"
+            android:hint="2020/01/01"
+            android:inputType="date"
+            android:onClick="@{() -> viewModel.onShowDatePickerDialog()}"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-
-        <Spinner
-            android:id="@+id/spinner_month"
-            android:layout_width="100dp"
-            android:layout_height="44dp"
-            android:entries="@{viewModel.monthBySpinner}"
-            app:layout_constraintBottom_toBottomOf="@+id/spinner_year"
-            app:layout_constraintEnd_toStartOf="@+id/textView9"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/textView8"
-            app:layout_constraintTop_toTopOf="@+id/spinner_year" />
-
-        <Spinner
-            android:id="@+id/spinner_day"
-            android:layout_width="100dp"
-            android:layout_height="44dp"
-            android:entries="@{viewModel.dayBySpinner}"
-            app:layout_constraintBottom_toBottomOf="@+id/spinner_month"
-            app:layout_constraintEnd_toStartOf="@+id/textView10"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/textView9"
-            app:layout_constraintTop_toTopOf="@+id/spinner_month" />
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="年"
-            app:layout_constraintBottom_toBottomOf="@+id/spinner_year"
-            app:layout_constraintEnd_toStartOf="@+id/spinner_month"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/spinner_year"
-            app:layout_constraintTop_toTopOf="@+id/spinner_year" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="月"
-            app:layout_constraintBottom_toBottomOf="@+id/spinner_month"
-            app:layout_constraintEnd_toStartOf="@+id/spinner_day"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/spinner_month"
-            app:layout_constraintTop_toTopOf="@+id/spinner_month" />
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="日"
-            app:layout_constraintBottom_toBottomOf="@+id/spinner_day"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/spinner_day"
-            app:layout_constraintTop_toTopOf="@+id/spinner_day" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

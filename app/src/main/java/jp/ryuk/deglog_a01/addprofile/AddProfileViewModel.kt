@@ -1,19 +1,14 @@
 package jp.ryuk.deglog_a01.addprofile
 
 import android.app.Application
-import android.app.DatePickerDialog
-import android.util.Log
-import android.view.KeyEvent
-import android.view.View
-import android.widget.Toast
-import androidx.lifecycle.*
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import jp.ryuk.deglog_a01.database.Profile
 import jp.ryuk.deglog_a01.database.ProfileDatabaseDao
 import jp.ryuk.deglog_a01.utilities.formatProfiles
-import jp.ryuk.deglog_a01.utilities.getNowYear
 import kotlinx.coroutines.*
-import java.lang.Exception
-import java.text.SimpleDateFormat
 import java.util.*
 
 class AddProfileViewModel(
@@ -44,18 +39,6 @@ class AddProfileViewModel(
     fun doneNavigate() {
         _navigateToDiary.value = false
     }
-
-//    private suspend fun insert(profile: Profile) {
-//        withContext(Dispatchers.IO) {
-//            database.insert(profile)
-//        }
-//    }
-//
-//    private suspend fun update(profile: Profile) {
-//        withContext(Dispatchers.IO) {
-//            database.update(profile)
-//        }
-//    }
 
     private suspend fun clear() {
         withContext(Dispatchers.IO) {
@@ -89,8 +72,7 @@ class AddProfileViewModel(
             newProfile.name = editTextName
             newProfile.type = editTextType
             newProfile.sex = editTextSex
-            // TODO DatePickerDialog
-//            newProfile.birthday = editTextBirthday.toLong()
+            newProfile.birthday = editTextBirthday
             insertOrUpdate(newProfile)
             _navigateToDiary.value = true
         }
@@ -101,22 +83,23 @@ class AddProfileViewModel(
         viewModelJob.cancel()
     }
 
+    val calender = Calendar.getInstance()
+    var year = calender.get(Calendar.YEAR)
+    var month = calender.get(Calendar.MONTH)
+    var day = calender.get(Calendar.DAY_OF_MONTH)
 
-    // 仮の日付入力（ダミー）
-    val yearBySpinner = arrayListOf<Int>()
-    val monthBySpinner = arrayListOf<Int>()
-    val dayBySpinner = arrayListOf<Int>()
+    fun onShowDatePickerDialog() {
+        _showDatePickerDialog.value = true
 
-    init {
-        val y = getNowYear()
-        for (i in 0..30) {
-            yearBySpinner.add(y - i)
-        }
-        for (i in 1..12) {
-            monthBySpinner.add(i)
-        }
-        for (i in 1..31) {
-            dayBySpinner.add(i)
-        }
     }
+
+    private var _showDatePickerDialog = MutableLiveData<Boolean>()
+    val showDatePickerDialog: LiveData<Boolean>
+        get() = _showDatePickerDialog
+
+    fun doneShowDatePickerDialog() {
+        _showDatePickerDialog.value = false
+    }
+
+
 }

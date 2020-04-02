@@ -18,7 +18,11 @@ import com.google.android.material.snackbar.Snackbar
 import jp.ryuk.deglog_a01.R
 import jp.ryuk.deglog_a01.database.ProfileDatabase
 import jp.ryuk.deglog_a01.databinding.FragmentAddProfileBinding
+import jp.ryuk.deglog_a01.utilities.convertLongToDateEditTextString
+import jp.ryuk.deglog_a01.utilities.convertLongToDateString
+import jp.ryuk.deglog_a01.utilities.convertYMDToLong
 import java.lang.Exception
+import java.util.*
 
 class AddProfileFragment : Fragment() {
 
@@ -42,6 +46,28 @@ class AddProfileFragment : Fragment() {
                     AddProfileFragmentDirections.actionAddProfileFragmentToDiaryFragment()
                 )
                 addProfileViewModel.doneNavigate()
+            }
+        })
+
+        addProfileViewModel.showDatePickerDialog.observe(viewLifecycleOwner, Observer {
+            if (it == true){
+
+                try {
+                    val dpb = DatePickerDialog(this.requireContext(), DatePickerDialog
+                        .OnDateSetListener{ view, y, m, d ->
+                            addProfileViewModel.editTextBirthday = convertYMDToLong(y, m, d)
+                            binding.editTextBirthday.setText(
+                                convertLongToDateEditTextString(addProfileViewModel.editTextBirthday))
+                        },
+                        addProfileViewModel.year,
+                        addProfileViewModel.month + 1,
+                        addProfileViewModel.day)
+                    dpb.show()
+                } catch (e: Exception) {
+                    Log.d("TEST", "DatePickerDialog: $e")
+                }
+
+                addProfileViewModel.doneShowDatePickerDialog()
             }
         })
 
