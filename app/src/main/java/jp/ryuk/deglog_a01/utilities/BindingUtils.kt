@@ -5,6 +5,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import jp.ryuk.deglog_a01.database.Animal
+import org.w3c.dom.Text
+
+@BindingAdapter("isGone")
+fun TextView.isGone(boolean: Boolean) {
+    visibility = if (boolean) View.GONE else View.VISIBLE
+}
 
 @BindingAdapter("diaryImageGone")
 fun ImageView.setDiaryImageGoneString(item: String?) {

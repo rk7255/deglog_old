@@ -59,7 +59,8 @@
             android:entries="@{addAnimalViewModel.names}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView_add_name"
-            app:layout_constraintTop_toTopOf="@+id/textView_add_name" />
+            app:layout_constraintTop_toTopOf="@+id/textView_add_name"
+            tools:listitem="@android:layout/activity_list_item" />
 
         <TextView
             android:id="@+id/textView_add_weight"
@@ -138,10 +139,21 @@
             android:layout_marginTop="32dp"
             android:onClick="@{() -> addAnimalViewModel.addNewAnimal()}"
             android:text="OK"
+            android:enabled="@{addAnimalViewModel.enable}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText_add_memo" />
 
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="profileを登録してください！"
+            app:isGone="@{addAnimalViewModel.enable}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

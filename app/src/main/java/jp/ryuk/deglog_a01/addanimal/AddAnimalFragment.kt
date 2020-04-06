@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -41,6 +42,23 @@ class AddAnimalFragment : Fragment() {
                 addAnimalViewModel.doneNavigate()
              }
         })
+
+
+        binding.spinnerAddName.onItemSelectedListener = object :AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                addAnimalViewModel.selectedName = parent?.selectedItem.toString()
+                addAnimalViewModel.enable.value = addAnimalViewModel.selectedName != "no profile"
+//                Log.d("TEST", "${parent?.selectedItem.toString()}")
+            }
+
+        }
 
         return binding.root
     }

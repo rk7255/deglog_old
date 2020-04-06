@@ -1,6 +1,7 @@
 package jp.ryuk.deglog_a01.addanimal
 
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,7 +9,6 @@ import jp.ryuk.deglog_a01.database.Animal
 import jp.ryuk.deglog_a01.database.AnimalDatabaseDao
 import jp.ryuk.deglog_a01.database.ProfileDatabaseDao
 import kotlinx.coroutines.*
-import java.lang.Exception
 
 class AddAnimalViewModel(
     val animalDatabase: AnimalDatabaseDao,
@@ -18,10 +18,11 @@ class AddAnimalViewModel(
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    var editTextName: String = ""
+    var selectedName: String = ""
     var editTextWeight: String = ""
     var editTextLength: String = ""
     var editTextMemo: String = ""
+    var enable = MutableLiveData(false)
 
     private var _navigateToDiary = MutableLiveData<Boolean?>()
     val navigateToDiary: LiveData<Boolean?>
@@ -61,7 +62,6 @@ class AddAnimalViewModel(
 
     fun addNewAnimal() {
         uiScope.launch {
-
             if (editTextWeight == "") {
                 editTextWeight = "-1"
             }
@@ -70,7 +70,7 @@ class AddAnimalViewModel(
             }
 
             val newAnimal = Animal()
-            newAnimal.name = editTextName
+            newAnimal.name = selectedName
             newAnimal.weight = editTextWeight.toInt()
             newAnimal.length = editTextLength.toInt()
             newAnimal.memo = editTextMemo
