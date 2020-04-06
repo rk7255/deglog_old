@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="addAnimalViewModel"
             type="jp.ryuk.deglog_a01.addanimal.AddAnimalViewModel" />
@@ -35,16 +36,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_add_title" />
 
-        <EditText
-            android:id="@+id/editText_add_name"
+        <!--        <EditText-->
+        <!--            android:id="@+id/editText_add_name"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="40dp"-->
+        <!--            android:layout_marginStart="8dp"-->
+        <!--            android:layout_marginEnd="32dp"-->
+        <!--            android:ems="10"-->
+        <!--            android:text="@={addAnimalViewModel.editTextName}"-->
+        <!--            android:hint="name"-->
+        <!--            android:inputType="textPersonName"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/textView_add_name"-->
+        <!--            app:layout_constraintTop_toTopOf="@+id/textView_add_name" />-->
+
+        <Spinner
+            android:id="@+id/spinner_add_name"
             android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="32dp"
-            android:ems="10"
-            android:text="@={addAnimalViewModel.editTextName}"
-            android:hint="name"
-            android:inputType="textPersonName"
+            android:entries="@{addAnimalViewModel.names}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView_add_name"
             app:layout_constraintTop_toTopOf="@+id/textView_add_name" />
@@ -65,9 +77,9 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="32dp"
             android:ems="10"
-            android:text="@={addAnimalViewModel.editTextWeight}"
             android:hint="weight"
             android:inputType="number"
+            android:text="@={addAnimalViewModel.editTextWeight}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView_add_weight"
             app:layout_constraintTop_toTopOf="@+id/textView_add_weight" />
@@ -88,9 +100,9 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="32dp"
             android:ems="10"
-            android:text="@={addAnimalViewModel.editTextLength}"
             android:hint="length"
             android:inputType="number"
+            android:text="@={addAnimalViewModel.editTextLength}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView_add_length"
             app:layout_constraintTop_toTopOf="@+id/textView_add_length" />
@@ -111,10 +123,10 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="32dp"
             android:ems="10"
-            android:text="@={addAnimalViewModel.editTextMemo}"
             android:gravity="start|top"
             android:hint="memo"
             android:inputType="textMultiLine"
+            android:text="@={addAnimalViewModel.editTextMemo}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView_add_memo"
             app:layout_constraintTop_toTopOf="@+id/textView_add_memo" />
@@ -129,5 +141,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText_add_memo" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

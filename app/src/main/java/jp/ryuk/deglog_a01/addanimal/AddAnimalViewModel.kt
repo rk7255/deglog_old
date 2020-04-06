@@ -1,5 +1,6 @@
 package jp.ryuk.deglog_a01.addanimal
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,6 +8,7 @@ import jp.ryuk.deglog_a01.database.Animal
 import jp.ryuk.deglog_a01.database.AnimalDatabaseDao
 import jp.ryuk.deglog_a01.database.ProfileDatabaseDao
 import kotlinx.coroutines.*
+import java.lang.Exception
 
 class AddAnimalViewModel(
     val animalDatabase: AnimalDatabaseDao,
@@ -27,6 +29,28 @@ class AddAnimalViewModel(
 
     fun doneNavigate() {
         _navigateToDiary.value = false
+    }
+
+    var names = MutableLiveData<List<String?>>()
+
+    init {
+        uiScope.launch {
+            getNames()
+
+            names.value = getNames()
+            Log.d("TEST", "nameList: ${names.value}")
+        }
+
+    }
+
+    private suspend fun getNames(): List<String?> {
+        return withContext(Dispatchers.IO) {
+            var names = profileDatabase.getNamesInProfile()
+            if (names.isNullOrEmpty()) {
+                names = listOf("no profile")
+            }
+            names
+        }
     }
 
     private suspend fun insert(animal: Animal) {
@@ -59,6 +83,5 @@ class AddAnimalViewModel(
         super.onCleared()
         viewModelJob.cancel()
     }
-
 
 }
