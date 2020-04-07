@@ -17,7 +17,7 @@ abstract class AnimalDatabase : RoomDatabase() {
 
         fun getInstance(context: Context): AnimalDatabase {
             return INSTANCE ?: synchronized(this) {
-                var instance = Room.databaseBuilder(
+                val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AnimalDatabase::class.java,
                     "animal_database"

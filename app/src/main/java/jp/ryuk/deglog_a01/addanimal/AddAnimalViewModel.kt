@@ -56,14 +56,7 @@ class AddAnimalViewModel(
             selectedName = names.value!![0].toString()
             Log.d("TEST", "nameList: ${names.value}, selectedName: $selectedName")
 
-            val animal = getAnimalLatest(selectedName)
-            Log.d("TEST", "animal: $animal")
-
-            editTextWeight = animal?.weight.toString()
-            editTextLength = animal?.length.toString()
-
             _initialized.value = true
-
         }
     }
 
@@ -96,8 +89,10 @@ class AddAnimalViewModel(
     fun changeData() {
         uiScope.launch {
             val animal = getAnimalLatest(selectedName)
-            editTextWeight = animal?.weight.toString()
-            editTextLength = animal?.length.toString()
+            Log.d("TEST", "animal: $animal")
+
+            editTextWeight = animal?.weight?.toString() ?: "0"
+            editTextLength = animal?.length?.toString() ?: "0"
 
             _initialized.value = true
         }
