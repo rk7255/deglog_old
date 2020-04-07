@@ -11,10 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 
 import jp.ryuk.deglog_a01.R
-import jp.ryuk.deglog_a01.database.AnimalDatabase
+import jp.ryuk.deglog_a01.database.DiaryDatabase
 import jp.ryuk.deglog_a01.databinding.FragmentDiaryDetailBinding
-import jp.ryuk.deglog_a01.diary.DiaryViewModel
-import jp.ryuk.deglog_a01.diary.DiaryViewModelFactory
 
 /**
  * A simple [Fragment] subclass.
@@ -32,7 +30,7 @@ class DiaryDetailFragment : Fragment() {
         val application = requireNotNull(this.activity).application
         val arguments = DiaryDetailFragmentArgs.fromBundle(arguments!!)
 
-        val dataSource = AnimalDatabase.getInstance(application).animalDatabaseDao
+        val dataSource = DiaryDatabase.getInstance(application).diaryDatabaseDao
         val viewModelFactory = DiaryDetailViewModelFactory(arguments.animalKey, dataSource)
         val diaryDetailViewModel = ViewModelProvider(this, viewModelFactory).get(DiaryDetailViewModel::class.java)
         binding.diaryDetailViewModel= diaryDetailViewModel

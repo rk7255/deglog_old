@@ -4,8 +4,6 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import jp.ryuk.deglog_a01.database.Animal
-import jp.ryuk.deglog_a01.database.Diary
 import jp.ryuk.deglog_a01.database.DiaryDatabaseDao
 import kotlinx.coroutines.*
 

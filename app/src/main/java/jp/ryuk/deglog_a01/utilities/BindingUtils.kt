@@ -24,15 +24,13 @@ fun ImageView.setDiaryImageGoneString(item: String?) {
 
 @BindingAdapter("diaryImageGone")
 fun ImageView.setDiaryImageGoneInt(item: Int?) {
-    item?.let {
-        visibility = if (item == null) {
-            View.GONE
-        } else {
-            View.VISIBLE
-        }
+    visibility = if (item == null) {
+        View.GONE
+    } else {
+        View.VISIBLE
     }
-}
 
+}
 
 @BindingAdapter("diaryName")
 fun TextView.setDiaryName(item: Diary?) {
@@ -52,28 +50,24 @@ fun TextView.setDiaryDateFormatted(item: Diary?){
 }
 
 @BindingAdapter("diaryWeightFormatted")
-fun TextView.setDiaryWeightFormatted(item: Diary?) {
-    item?.let {
-        if (item.weight == null) {
-            visibility = View.GONE
-        } else {
-            text = convertWeight(item.weight!!)
-            visibility = View.VISIBLE
+fun TextView.setDiaryWeightFormatted(item: Int?) {
+    if (item == null) {
+        visibility = View.GONE
+    } else {
+        text = convertWeight(item)
+        visibility = View.VISIBLE
 
-        }
     }
 }
 
 @BindingAdapter("diaryLengthFormatted")
-fun TextView.setDiaryLengthFormatted(item: Diary?) {
-    item?.let {
-        if (item.length == null) {
-            visibility = View.GONE
-        } else {
-            text = convertLength(item.length!!)
-            visibility = View.VISIBLE
+fun TextView.setDiaryLengthFormatted(item: Int?) {
+    if (item == null) {
+        visibility = View.GONE
+    } else {
+        text = convertLength(item)
+        visibility = View.VISIBLE
 
-        }
     }
 }
 

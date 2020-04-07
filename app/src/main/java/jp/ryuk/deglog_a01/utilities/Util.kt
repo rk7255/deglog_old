@@ -4,10 +4,8 @@ import android.annotation.SuppressLint
 import android.os.Build
 import android.text.Html
 import android.text.Spanned
-import android.widget.EditText
 import androidx.core.text.HtmlCompat
-import androidx.databinding.InverseMethod
-import jp.ryuk.deglog_a01.database.Animal
+import jp.ryuk.deglog_a01.database.Diary
 import jp.ryuk.deglog_a01.database.Profile
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -69,7 +67,7 @@ fun convertMemo(memo: String): String? {
     return if (memo.isEmpty()) { null } else { memo }
 }
 
-fun formatAnimals(animal: Animal?): Spanned {
+fun formatAnimals(animal: Diary?): Spanned {
     val sb = StringBuilder()
     sb.apply {
         animal?.let {
