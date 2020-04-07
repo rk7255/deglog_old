@@ -52,7 +52,7 @@ class DiaryFragment : Fragment() {
         diaryViewModel.navigateToAddDiary.observe(viewLifecycleOwner, Observer {
             if (it == true) {
                 this.findNavController().navigate(
-                    DiaryFragmentDirections.actionDiaryFragmentToAddAnimalFragment()
+                    DiaryFragmentDirections.actionDiaryFragmentToAddDiaryFragment()
                 )
                 diaryViewModel.doneNavigateToAddDiary()
             }

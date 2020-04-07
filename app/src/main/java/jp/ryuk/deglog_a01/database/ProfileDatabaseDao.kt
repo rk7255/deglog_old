@@ -15,10 +15,10 @@ interface ProfileDatabaseDao {
     fun delete(profile: Profile)
     
     @Query("SELECT name FROM animal_profiles")
-    fun getNamesInProfile() : List<String?>
+    fun getNamesInProfile() : List<String>
 
     @Query("SELECT * FROM animal_profiles WHERE name = :key")
-    fun getProfile(key: String) : Profile?
+    fun getProfile(key: String) : Profile
 
     @Query("SELECT * FROM animal_profiles")
     fun getProfiles() : LiveData<List<Profile>>

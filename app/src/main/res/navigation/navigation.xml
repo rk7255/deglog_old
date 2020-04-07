@@ -11,8 +11,8 @@
         android:label="fragment_diary"
         tools:layout="@layout/fragment_diary">
         <action
-            android:id="@+id/action_diaryFragment_to_addAnimalFragment"
-            app:destination="@id/addAnimalFragment"
+            android:id="@+id/action_diaryFragment_to_addDiaryFragment"
+            app:destination="@id/addDiaryFragment"
             app:enterAnim="@anim/slide_in_left"
             app:exitAnim="@anim/slide_out_right"
             app:popEnterAnim="@anim/slide_in_right"
@@ -26,20 +26,27 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
+            android:id="@+id/action_diaryFragment_to_addDiaryFragment2"
+            app:destination="@id/addDiaryFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
             android:id="@+id/action_diaryFragment_to_addProfileFragment"
             app:destination="@id/addProfileFragment"
             app:enterAnim="@anim/slide_in_left"
             app:exitAnim="@anim/slide_out_right"
-            app:popEnterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_left" />
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
-        android:id="@+id/addAnimalFragment"
-        android:name="jp.ryuk.deglog_a01.addanimal.AddAnimalFragment"
-        android:label="AddAnimalFragment"
-        tools:layout="@layout/fragment_add_animal">
+        android:id="@+id/addDiaryFragment"
+        android:name="jp.ryuk.deglog_a01.adddiary.AddDiaryFragment"
+        android:label="AddDiaryFragment"
+        tools:layout="@layout/fragment_add_diary">
         <action
-            android:id="@+id/action_addAnimalFragment_to_diaryFragment"
+            android:id="@+id/action_addDiaryFragment_to_diaryFragment"
             app:destination="@id/diaryFragment"
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/fade_out"

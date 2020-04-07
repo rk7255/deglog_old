@@ -20,8 +20,8 @@ interface DiaryDatabaseDao {
     @Query("SELECT * FROM diary_table WHERE id = :key")
     fun getDiary(key: Long) : Diary
 
-    @Query("SELECT * FROM diary_table WHERE name = :name ORDER BY id LIMIT 1")
-    fun getLatestDiary(name: String) : Diary
+    @Query("SELECT * FROM diary_table WHERE name = :name ORDER BY id DESC LIMIT 1")
+    fun getLatestDiaryAtName(name: String) : Diary?
 
     @Query("DELETE FROM diary_table")
     fun clear()

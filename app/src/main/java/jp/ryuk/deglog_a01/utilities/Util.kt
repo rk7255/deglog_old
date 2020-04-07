@@ -4,7 +4,9 @@ import android.annotation.SuppressLint
 import android.os.Build
 import android.text.Html
 import android.text.Spanned
+import android.widget.EditText
 import androidx.core.text.HtmlCompat
+import androidx.databinding.InverseMethod
 import jp.ryuk.deglog_a01.database.Animal
 import jp.ryuk.deglog_a01.database.Profile
 import java.text.ParseException
@@ -31,8 +33,6 @@ fun convertLongToDateEditTextString(systemTime: Long): String {
         .format(systemTime).toString()
 }
 
-
-
 /*
  * https://riptutorial.com/ja/android/example/23921/%E6%97%A5%E4%BB%98%E5%BD%A2%E5%BC%8F%E3%82%92%E3%83%9F%E3%83%AA%E7%A7%92%E3%81%AB%E5%A4%89%E6%8F%9B
  */
@@ -47,6 +47,14 @@ fun getMilliFromDate(dateFormat: String?): Long {
     }
     println("Today is $date")
     return date.getTime()
+}
+
+fun convertIntToString(num: Int?): String {
+    return num?.toString() ?: ""
+}
+
+fun convertStringToInt(str: String?): Int? {
+    return if (str.isNullOrEmpty()) null else str.toInt()
 }
 
 fun convertWeight(weight: Int): String? {

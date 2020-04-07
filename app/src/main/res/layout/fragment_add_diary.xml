@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="addDiaryViewModel"
+            type="jp.ryuk.deglog_a01.adddiary.AddDiaryViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".adddiary.AddDiaryFragment">
+
+        <TextView
+            android:id="@+id/textView_add_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="追加"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_add_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:text="名前"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_add_title" />
+
+        <Spinner
+            android:id="@+id/spinner_add_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="32dp"
+            android:entries="@{addDiaryViewModel.names}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView_add_name"
+            app:layout_constraintTop_toTopOf="@+id/textView_add_name"
+            tools:listitem="@android:layout/activity_list_item" />
+
+        <TextView
+            android:id="@+id/textView_add_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="体重"
+            app:layout_constraintStart_toStartOf="@+id/textView_add_name"
+            app:layout_constraintTop_toBottomOf="@+id/textView_add_name" />
+
+        <EditText
+            android:id="@+id/editText_add_weight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="weight"
+            android:inputType="number"
+            android:text="@={addDiaryViewModel.weight}"
+            app:layout_constraintBottom_toBottomOf="@+id/button7"
+            app:layout_constraintEnd_toStartOf="@+id/button6"
+            app:layout_constraintStart_toEndOf="@+id/button7"
+            app:layout_constraintTop_toTopOf="@+id/button7" />
+
+        <TextView
+            android:id="@+id/textView_add_length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:text="体長"
+            app:layout_constraintStart_toStartOf="@+id/textView_add_weight"
+            app:layout_constraintTop_toBottomOf="@+id/textView_add_weight" />
+
+        <EditText
+            android:id="@+id/editText_add_length"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="length"
+            android:inputType="number"
+            android:text="@={addDiaryViewModel.length}"
+            app:layout_constraintBottom_toBottomOf="@+id/button9"
+            app:layout_constraintEnd_toStartOf="@+id/button8"
+            app:layout_constraintStart_toEndOf="@+id/button9"
+            app:layout_constraintTop_toBottomOf="@+id/button7" />
+
+        <TextView
+            android:id="@+id/textView_add_memo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:text="メモ"
+            app:layout_constraintStart_toStartOf="@+id/textView_add_length"
+            app:layout_constraintTop_toBottomOf="@+id/textView_add_length" />
+
+        <EditText
+            android:id="@+id/editText_add_memo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="32dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="memo"
+            android:inputType="textMultiLine"
+            android:text="@={addDiaryViewModel.memo}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView_add_memo"
+            app:layout_constraintTop_toTopOf="@+id/textView_add_memo" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:onClick="@{() -> addDiaryViewModel.addNewDiary()}"
+            android:text="OK"
+            android:enabled="@{addDiaryViewModel.enable}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_add_memo" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="profileを登録してください！"
+            app:isGone="@{addDiaryViewModel.enable}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:onClick="@{() -> addDiaryViewModel.plusWeight()}"
+            android:text="+"
+            app:layout_constraintBottom_toBottomOf="@+id/editText_add_weight"
+            app:layout_constraintEnd_toStartOf="@+id/button10"
+            app:layout_constraintTop_toTopOf="@+id/editText_add_weight"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:onClick="@{() -> addDiaryViewModel.minusWeight()}"
+            android:text="-"
+            app:layout_constraintStart_toEndOf="@+id/textView_add_weight"
+            app:layout_constraintTop_toTopOf="@+id/textView_add_weight" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:onClick="@{() -> addDiaryViewModel.plusLength()}"
+
+            android:text="+"
+            app:layout_constraintBottom_toBottomOf="@+id/editText_add_length"
+            app:layout_constraintEnd_toStartOf="@+id/button2"
+            app:layout_constraintTop_toTopOf="@+id/editText_add_length" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="-"
+            android:onClick="@{() -> addDiaryViewModel.minusLength()}"
+
+            app:layout_constraintStart_toEndOf="@+id/textView_add_length"
+            app:layout_constraintTop_toTopOf="@+id/textView_add_length" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:text="C"
+            android:onClick="@{() -> addDiaryViewModel.clearLength()}"
+            app:layout_constraintBottom_toBottomOf="@+id/button8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/button8" />
+
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:text="C"
+            android:onClick="@{() -> addDiaryViewModel.clearWeight()}"
+            app:layout_constraintBottom_toBottomOf="@+id/button6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/button6" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -10,13 +10,17 @@ import jp.ryuk.deglog_a01.database.DiaryDatabaseDao
 import kotlinx.coroutines.*
 
 class DiaryViewModel(
-    val diaryDatabase: DiaryDatabaseDao,
+    private val diaryDatabase: DiaryDatabaseDao,
     application: Application
     ) : AndroidViewModel(application) {
 
     private var viewModelJob = Job()
     private var uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
     var diaries = diaryDatabase.getDiaries()
+
+    init {
+        diaries = diaryDatabase.getDiaries()
+    }
 
     /*
      *  LiveData関連
