@@ -4,8 +4,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import jp.ryuk.deglog_a01.database.Animal
-import org.w3c.dom.Text
+import jp.ryuk.deglog_a01.database.Diary
 
 @BindingAdapter("isGone")
 fun TextView.isGone(boolean: Boolean) {
@@ -26,7 +25,7 @@ fun ImageView.setDiaryImageGoneString(item: String?) {
 @BindingAdapter("diaryImageGone")
 fun ImageView.setDiaryImageGoneInt(item: Int?) {
     item?.let {
-        visibility = if (item == -1) {
+        visibility = if (item == null) {
             View.GONE
         } else {
             View.VISIBLE
@@ -36,7 +35,7 @@ fun ImageView.setDiaryImageGoneInt(item: Int?) {
 
 
 @BindingAdapter("diaryName")
-fun TextView.setDiaryName(item: Animal?) {
+fun TextView.setDiaryName(item: Diary?) {
     item?.let {
         text = item.name
         visibility = View.VISIBLE
@@ -44,7 +43,7 @@ fun TextView.setDiaryName(item: Animal?) {
 }
 
 @BindingAdapter("diaryDateFormatted")
-fun TextView.setDiaryDateFormatted(item: Animal?){
+fun TextView.setDiaryDateFormatted(item: Diary?){
     item?.let {
         text = convertLongToDateString(item.date)
         visibility = View.VISIBLE
@@ -53,12 +52,12 @@ fun TextView.setDiaryDateFormatted(item: Animal?){
 }
 
 @BindingAdapter("diaryWeightFormatted")
-fun TextView.setDiaryWeightFormatted(item: Animal?) {
+fun TextView.setDiaryWeightFormatted(item: Diary?) {
     item?.let {
-        if (item.weight == -1) {
+        if (item.weight == null) {
             visibility = View.GONE
         } else {
-            text = convertWeight(item.weight)
+            text = convertWeight(item.weight!!)
             visibility = View.VISIBLE
 
         }
@@ -66,12 +65,12 @@ fun TextView.setDiaryWeightFormatted(item: Animal?) {
 }
 
 @BindingAdapter("diaryLengthFormatted")
-fun TextView.setDiaryLengthFormatted(item: Animal?) {
+fun TextView.setDiaryLengthFormatted(item: Diary?) {
     item?.let {
-        if (item.length == -1) {
+        if (item.length == null) {
             visibility = View.GONE
         } else {
-            text = convertLength(item.length)
+            text = convertLength(item.length!!)
             visibility = View.VISIBLE
 
         }
@@ -79,12 +78,12 @@ fun TextView.setDiaryLengthFormatted(item: Animal?) {
 }
 
 @BindingAdapter("diaryMemoFormatted")
-fun TextView.setDiaryMemoFormatted(item: Animal?) {
+fun TextView.setDiaryMemoFormatted(item: Diary?) {
     item?.let {
-        if (item.memo.isEmpty()) {
+        if (item.memo.isNullOrEmpty()) {
             visibility = View.GONE
         } else {
-            text = convertMemo(item.memo)
+            text = item.memo
             visibility = View.VISIBLE
 
         }

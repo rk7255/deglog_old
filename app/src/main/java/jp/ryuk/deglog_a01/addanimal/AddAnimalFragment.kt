@@ -37,15 +37,15 @@ class AddAnimalFragment : Fragment() {
         binding.addAnimalViewModel = addAnimalViewModel
         binding.lifecycleOwner = this
 
-        addAnimalViewModel.navigateToDiary.observe(viewLifecycleOwner, Observer {
-            if (it == true) {
-                this.findNavController().navigate(
-                    AddAnimalFragmentDirections
-                        .actionAddAnimalFragmentToDiaryFragment()
-                )
-                addAnimalViewModel.doneNavigate()
-            }
-        })
+//        addAnimalViewModel.navigateToDiary.observe(viewLifecycleOwner, Observer {
+//            if (it == true) {
+//                this.findNavController().navigate(
+//                    AddAnimalFragmentDirections
+//                        .actionAddAnimalFragmentToDiaryFragment()
+//                )
+//                addAnimalViewModel.doneNavigate()
+//            }
+//        })
 
         addAnimalViewModel.initialized.observe(viewLifecycleOwner, Observer {
             if (it == true) {

@@ -7,15 +7,15 @@
         <variable
             name="diary"
             type="jp.ryuk.deglog_a01.database.Diary" />
-<!--        <variable-->
-<!--            name="clickListener"-->
-<!--            type="jp.ryuk.deglog_a01.adapters.DiaryListener" />-->
+        <variable
+            name="clickListener"
+            type="jp.ryuk.deglog_a01.adapters.DiaryListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-<!--        android:onClick="@{() -> clickListener.onClick(diary)}">-->
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> clickListener.onClick(diary)}">
 
         <TextView
             android:id="@+id/textview_item_date"
