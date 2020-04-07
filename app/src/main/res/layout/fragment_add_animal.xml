@@ -75,21 +75,20 @@
             android:id="@+id/editText_add_weight"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="32dp"
             android:ems="10"
             android:hint="weight"
             android:inputType="number"
             android:text="@={addAnimalViewModel.editTextWeight}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView_add_weight"
-            app:layout_constraintTop_toTopOf="@+id/textView_add_weight" />
+            app:layout_constraintBottom_toBottomOf="@+id/button7"
+            app:layout_constraintEnd_toStartOf="@+id/button6"
+            app:layout_constraintStart_toEndOf="@+id/button7"
+            app:layout_constraintTop_toTopOf="@+id/button7" />
 
         <TextView
             android:id="@+id/textView_add_length"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="48dp"
             android:text="体長"
             app:layout_constraintStart_toStartOf="@+id/textView_add_weight"
             app:layout_constraintTop_toBottomOf="@+id/textView_add_weight" />
@@ -98,21 +97,20 @@
             android:id="@+id/editText_add_length"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="32dp"
             android:ems="10"
             android:hint="length"
             android:inputType="number"
             android:text="@={addAnimalViewModel.editTextLength}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView_add_length"
-            app:layout_constraintTop_toTopOf="@+id/textView_add_length" />
+            app:layout_constraintBottom_toBottomOf="@+id/button9"
+            app:layout_constraintEnd_toStartOf="@+id/button8"
+            app:layout_constraintStart_toEndOf="@+id/button9"
+            app:layout_constraintTop_toBottomOf="@+id/button7" />
 
         <TextView
             android:id="@+id/textView_add_memo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="48dp"
             android:text="メモ"
             app:layout_constraintStart_toStartOf="@+id/textView_add_length"
             app:layout_constraintTop_toBottomOf="@+id/textView_add_length" />
@@ -154,6 +152,50 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:text="+"
+            android:onClick="@{() -> addAnimalViewModel.weightPlus()}"
+            app:layout_constraintBottom_toBottomOf="@+id/editText_add_weight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/editText_add_weight" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:onClick="@{() -> addAnimalViewModel.weightMinus()}"
+            android:text="-"
+            app:layout_constraintStart_toEndOf="@+id/textView_add_weight"
+            app:layout_constraintTop_toTopOf="@+id/textView_add_weight" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:text="+"
+            android:onClick="@{() -> addAnimalViewModel.lengthPlus()}"
+
+            app:layout_constraintBottom_toBottomOf="@+id/editText_add_length"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/editText_add_length" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="-"
+            android:onClick="@{() -> addAnimalViewModel.lengthMinus()}"
+
+            app:layout_constraintStart_toEndOf="@+id/textView_add_length"
+            app:layout_constraintTop_toTopOf="@+id/textView_add_length" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

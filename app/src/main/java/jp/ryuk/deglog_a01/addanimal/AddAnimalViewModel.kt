@@ -9,6 +9,7 @@ import jp.ryuk.deglog_a01.database.Animal
 import jp.ryuk.deglog_a01.database.AnimalDatabaseDao
 import jp.ryuk.deglog_a01.database.ProfileDatabaseDao
 import kotlinx.coroutines.*
+import kotlin.math.E
 
 class AddAnimalViewModel(
     val animalDatabase: AnimalDatabaseDao,
@@ -32,16 +33,88 @@ class AddAnimalViewModel(
         _navigateToDiary.value = false
     }
 
+    private var _initialized = MutableLiveData<Boolean>()
+    val initialized: LiveData<Boolean>
+        get() = _initialized
+
+    fun doneInitialized() {
+        _initialized.value = false
+    }
+
     var names = MutableLiveData<List<String?>>()
 
     init {
+        initialize()
+        doneInitialized()
+    }
+
+
+    private fun initialize() {
         uiScope.launch {
             getNames()
-
             names.value = getNames()
-            Log.d("TEST", "nameList: ${names.value}")
-        }
+            selectedName = names.value!![0].toString()
+            Log.d("TEST", "nameList: ${names.value}, selectedName: $selectedName")
 
+            val animal = getAnimalLatest(selectedName)
+            Log.d("TEST", "animal: $animal")
+
+            editTextWeight = animal?.weight.toString()
+            editTextLength = animal?.length.toString()
+
+            _initialized.value = true
+
+        }
+    }
+
+    fun weightPlus() {
+        editTextWeight = (editTextWeight.toInt() + 1).toString()
+        _initialized.value = true
+
+    }
+
+    fun weightMinus() {
+        editTextWeight = (editTextWeight.toInt() - 1).toString()
+        _initialized.value = true
+
+    }
+
+    fun lengthPlus() {
+        editTextLength = (editTextLength.toInt() + 1).toString()
+        _initialized.value = true
+
+    }
+
+    fun lengthMinus() {
+        editTextLength = (editTextLength.toInt() - 1).toString()
+        _initialized.value = true
+
+    }
+
+
+
+    fun changeData() {
+        uiScope.launch {
+            val animal = getAnimalLatest(selectedName)
+            editTextWeight = animal?.weight.toString()
+            editTextLength = animal?.length.toString()
+
+            _initialized.value = true
+        }
+    }
+
+    private suspend fun getAnimalLatest(name: String): Animal? {
+        return withContext(Dispatchers.IO) {
+            val animal = animalDatabase.getAnimalLatest(name)
+            animal
+        }
+    }
+
+    private suspend fun getLatest(): Animal? {
+        return withContext(Dispatchers.IO) {
+            val latest = animalDatabase.getLatest()
+            latest
+        }
     }
 
     private suspend fun getNames(): List<String?> {

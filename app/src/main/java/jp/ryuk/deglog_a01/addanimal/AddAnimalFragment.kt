@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -24,41 +25,49 @@ class AddAnimalFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding: FragmentAddAnimalBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_add_animal, container, false)
+            inflater, R.layout.fragment_add_animal, container, false
+        )
 
         val application = requireNotNull(this.activity).application
         val dataSourceAnimal = AnimalDatabase.getInstance(application).animalDatabaseDao
         val dataSourceProfile = ProfileDatabase.getInstance(application).profileDatabaseDao
         val viewModelFactory = AddAnimalViewModelFactory(dataSourceAnimal, dataSourceProfile)
-        val addAnimalViewModel = ViewModelProvider(this, viewModelFactory).get(AddAnimalViewModel::class.java)
+        val addAnimalViewModel =
+            ViewModelProvider(this, viewModelFactory).get(AddAnimalViewModel::class.java)
         binding.addAnimalViewModel = addAnimalViewModel
         binding.lifecycleOwner = this
 
         addAnimalViewModel.navigateToDiary.observe(viewLifecycleOwner, Observer {
             if (it == true) {
-                 this.findNavController().navigate(
-                     AddAnimalFragmentDirections
-                         .actionAddAnimalFragmentToDiaryFragment())
+                this.findNavController().navigate(
+                    AddAnimalFragmentDirections
+                        .actionAddAnimalFragmentToDiaryFragment()
+                )
                 addAnimalViewModel.doneNavigate()
-             }
+            }
         })
 
+        addAnimalViewModel.initialized.observe(viewLifecycleOwner, Observer {
+            if (it == true) {
+                binding.editTextAddWeight.setText(addAnimalViewModel.editTextWeight)
+                binding.editTextAddLength.setText(addAnimalViewModel.editTextLength)
 
-        binding.spinnerAddName.onItemSelectedListener = object :AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                addAnimalViewModel.selectedName = parent?.selectedItem.toString()
-                addAnimalViewModel.enable.value = addAnimalViewModel.selectedName != "no profile"
-//                Log.d("TEST", "${parent?.selectedItem.toString()}")
+                addAnimalViewModel.doneInitialized()
             }
+        })
 
-        }
+        binding.spinnerAddName.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+
+                override fun onItemSelected(
+                    parent: AdapterView<*>?, view: View?, position: Int, id: Long
+                ) {
+                    addAnimalViewModel.selectedName = parent?.selectedItem.toString()
+                    addAnimalViewModel.enable.value = addAnimalViewModel.selectedName != "no profile"
+                    addAnimalViewModel.changeData()
+                }
+            }
 
         return binding.root
     }

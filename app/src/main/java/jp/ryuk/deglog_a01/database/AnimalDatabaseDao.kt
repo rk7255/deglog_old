@@ -26,4 +26,7 @@ interface AnimalDatabaseDao {
     @Query("SELECT * FROM animal_table ORDER BY id DESC LIMIT 1")
     fun getLatest(): Animal?
 
+    @Query("SELECT * FROM animal_table WHERE name = :name ORDER BY id DESC LIMIT 1")
+    fun getAnimalLatest(name: String): Animal?
+
 }
