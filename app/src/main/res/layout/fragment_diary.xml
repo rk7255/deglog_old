@@ -31,23 +31,12 @@
             android:id="@+id/button_add_diary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_add"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:onClick="@{() -> diaryViewModel.onClickAddDiary()}"
-            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_add"
             app:layout_constraintBottom_toBottomOf="@+id/recyclerview_dairy"
             app:layout_constraintEnd_toEndOf="parent" />
-
-<!--        <Button-->
-<!--            android:id="@+id/button_add_profile"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:onClick="@{() -> diaryViewModel.onClickAddProfile()}"-->
-<!--            android:text="Profile追加"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toStartOf="@+id/button_clear"-->
-<!--            app:layout_constraintHorizontal_bias="0.5"-->
-<!--            app:layout_constraintStart_toStartOf="parent" />-->
 
         <Button
             android:id="@+id/button_clear"
