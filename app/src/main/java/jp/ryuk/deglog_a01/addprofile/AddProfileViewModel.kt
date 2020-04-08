@@ -25,12 +25,12 @@ class AddProfileViewModel(
 
     private val profiles = database.getProfiles()
 
-    private var _navigateToDiary = MutableLiveData<Boolean?>()
-    val navigateToDiary: LiveData<Boolean?>
-        get() = _navigateToDiary
+    private var _navigateToAddDiary = MutableLiveData<Boolean?>()
+    val navigateToAddDiary: LiveData<Boolean?>
+        get() = _navigateToAddDiary
 
     fun doneNavigate() {
-        _navigateToDiary.value = false
+        _navigateToAddDiary.value = false
     }
 
     private suspend fun clear() {
@@ -67,7 +67,7 @@ class AddProfileViewModel(
             newProfile.sex = editTextSex
             newProfile.birthday = editTextBirthday
             insertOrUpdate(newProfile)
-            _navigateToDiary.value = true
+            _navigateToAddDiary.value = true
         }
     }
 

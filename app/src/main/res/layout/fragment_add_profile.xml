@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="viewModel"
+            name="addProfileViewModel"
             type="jp.ryuk.deglog_a01.addprofile.AddProfileViewModel" />
     </data>
 
@@ -42,7 +42,7 @@
             android:ems="10"
             android:hint="名前"
             android:inputType="textPersonName"
-            android:text="@={viewModel.editTextName}"
+            android:text="@={addProfileViewModel.editTextName}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -64,7 +64,7 @@
             android:ems="10"
             android:hint="デグー"
             android:inputType="textPersonName"
-            android:text="@={viewModel.editTextType}"
+            android:text="@={addProfileViewModel.editTextType}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -86,7 +86,7 @@
             android:ems="10"
             android:hint="オス"
             android:inputType="textPersonName"
-            android:text="@={viewModel.editTextSex}"
+            android:text="@={addProfileViewModel.editTextSex}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -106,7 +106,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:onClick="@{() -> viewModel.addNewProfile()}"
+            android:onClick="@{() -> addProfileViewModel.addNewProfile()}"
             android:text="追加"
             app:layout_constraintEnd_toStartOf="@+id/button5"
             app:layout_constraintHorizontal_bias="0.5"
@@ -117,7 +117,7 @@
             android:id="@+id/button5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> viewModel.onClear()}"
+            android:onClick="@{() -> addProfileViewModel.onClear()}"
             android:text="クリア"
             app:layout_constraintBottom_toBottomOf="@+id/button3"
             app:layout_constraintEnd_toEndOf="parent"
@@ -133,7 +133,7 @@
             android:focusable="false"
             android:hint="2020/01/01"
             android:inputType="date"
-            android:onClick="@{() -> viewModel.onShowDatePickerDialog()}"
+            android:onClick="@{() -> addProfileViewModel.onShowDatePickerDialog()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />

@@ -18,9 +18,9 @@ interface ProfileDatabaseDao {
     fun getNamesInProfile() : List<String>
 
     @Query("SELECT * FROM animal_profiles WHERE name = :key")
-    fun getProfile(key: String) : Profile
+    fun getProfile(key: String) : Profile?
 
-    @Query("SELECT * FROM animal_profiles")
+    @Query("SELECT * FROM animal_profiles ORDER BY name")
     fun getProfiles() : LiveData<List<Profile>>
 
     @Query("DELETE FROM animal_profiles")

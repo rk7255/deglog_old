@@ -38,7 +38,7 @@
             app:diaryImageGone="@{diary.weight}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textview_item_date"
-            app:srcCompat="@drawable/ic_dummy" />
+            app:srcCompat="@drawable/ic_weight" />
 
         <TextView
             android:id="@+id/textview_item_weight"
@@ -62,7 +62,7 @@
             app:diaryImageGone="@{diary.length}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageview_item_weight"
-            app:srcCompat="@drawable/ic_dummy" />
+            app:srcCompat="@drawable/ic_length" />
 
         <TextView
             android:id="@+id/textview_item_length"
@@ -88,7 +88,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageview_item_length"
-            app:srcCompat="@drawable/ic_dummy" />
+            app:srcCompat="@drawable/ic_note" />
 
         <TextView
             android:id="@+id/textview_item_memo"

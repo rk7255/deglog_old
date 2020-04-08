@@ -22,7 +22,7 @@ fun convertLongToDateString(systemTime: Long): String {
 
 @SuppressLint("SimpleDateFormat")
 fun convertLongToDateStringInTime(systemTime: Long): String {
-    return SimpleDateFormat("yyyy/MM/dd EE HH:mm")
+    return SimpleDateFormat("yyyy/MM/dd - HH:mm")
         .format(systemTime).toString()
 }
 

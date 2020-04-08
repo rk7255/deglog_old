@@ -18,7 +18,6 @@ import jp.ryuk.deglog_a01.databinding.FragmentAddProfileBinding
 import jp.ryuk.deglog_a01.utilities.convertLongToDateString
 import jp.ryuk.deglog_a01.utilities.convertYMDToLong
 import java.lang.Exception
-import java.util.*
 
 class AddProfileFragment : Fragment() {
 
@@ -33,13 +32,13 @@ class AddProfileFragment : Fragment() {
         val dataSource = ProfileDatabase.getInstance(application).profileDatabaseDao
         val viewModelFactory = AddProfileViewModelFactory(dataSource, application)
         val addProfileViewModel = ViewModelProvider(this, viewModelFactory).get(AddProfileViewModel::class.java)
-        binding.viewModel = addProfileViewModel
+        binding.addProfileViewModel = addProfileViewModel
         binding.lifecycleOwner = this
 
-        addProfileViewModel.navigateToDiary.observe(viewLifecycleOwner, Observer {
+        addProfileViewModel.navigateToAddDiary.observe(viewLifecycleOwner, Observer {
             if (it == true) {
                 this.findNavController().navigate(
-                    AddProfileFragmentDirections.actionAddProfileFragmentToDiaryFragment()
+                    AddProfileFragmentDirections.actionAddProfileFragmentToAddDiaryFragment()
                 )
                 addProfileViewModel.doneNavigate()
             }
@@ -61,7 +60,7 @@ class AddProfileFragment : Fragment() {
         try {
             val dpb = DatePickerDialog(
                 this.requireContext(), DatePickerDialog
-                    .OnDateSetListener { view, y, m, d ->
+                    .OnDateSetListener { _, y, m, d ->
                         addProfileViewModel.editTextBirthday = convertYMDToLong(y, m, d)
                         binding.editTextBirthday.setText(
                             convertLongToDateString(addProfileViewModel.editTextBirthday)

@@ -13,30 +13,16 @@
         <action
             android:id="@+id/action_diaryFragment_to_addDiaryFragment"
             app:destination="@id/addDiaryFragment"
-            app:enterAnim="@anim/slide_in_left"
-            app:exitAnim="@anim/slide_out_right"
-            app:popEnterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_diaryFragment_to_diaryDetailFragment"
             app:destination="@id/diaryDetailFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-        <action
-            android:id="@+id/action_diaryFragment_to_addDiaryFragment2"
-            app:destination="@id/addDiaryFragment"
-            app:enterAnim="@anim/slide_in_left"
-            app:exitAnim="@anim/slide_out_right"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-        <action
-            android:id="@+id/action_diaryFragment_to_addProfileFragment"
-            app:destination="@id/addProfileFragment"
-            app:enterAnim="@anim/slide_in_left"
-            app:exitAnim="@anim/slide_out_right"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
@@ -53,6 +39,14 @@
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/fade_out"
             app:popUpTo="@id/diaryFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_addDiaryFragment_to_addProfileFragment"
+            app:destination="@id/addProfileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -79,13 +73,13 @@
         android:name="jp.ryuk.deglog_a01.addprofile.AddProfileFragment"
         android:label="AddProfileFragment" >
         <action
-            android:id="@+id/action_addProfileFragment_to_diaryFragment"
-            app:destination="@id/diaryFragment"
+            android:id="@+id/action_addProfileFragment_to_addDiaryFragment"
+            app:destination="@id/addDiaryFragment"
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/fade_out"
-            app:popUpTo="@id/diaryFragment"
+            app:popUpTo="@id/addDiaryFragment"
             app:popUpToInclusive="true" />
     </fragment>
 </navigation>

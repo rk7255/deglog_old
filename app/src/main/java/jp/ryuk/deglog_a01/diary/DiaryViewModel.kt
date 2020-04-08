@@ -43,15 +43,15 @@ class DiaryViewModel(
         _navigateToDiaryDetail.value = id
     }
 
-    private val _navigateToAddProfile = MutableLiveData<Boolean>()
-    val navigateToAddProfile: LiveData<Boolean>
-        get() = _navigateToAddProfile
-    fun doneNavigateToAddProfile() {
-        _navigateToAddProfile.value = false
-    }
-    fun onClickAddProfile() {
-        _navigateToAddProfile.value = true
-    }
+//    private val _navigateToAddProfile = MutableLiveData<Boolean>()
+//    val navigateToAddProfile: LiveData<Boolean>
+//        get() = _navigateToAddProfile
+//    fun doneNavigateToAddProfile() {
+//        _navigateToAddProfile.value = false
+//    }
+//    fun onClickAddProfile() {
+//        _navigateToAddProfile.value = true
+//    }
 
 
     /*

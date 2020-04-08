@@ -132,6 +132,16 @@ class AddDiaryViewModel (
         _navigateToDiary.value = false
     }
 
+    private val _navigateToAddProfile = MutableLiveData<Boolean>()
+    val navigateToAddProfile: LiveData<Boolean>
+        get() = _navigateToAddProfile
+    fun doneNavigateToAddProfile() {
+        _navigateToAddProfile.value = false
+    }
+    fun onClickAddProfile() {
+        _navigateToAddProfile.value = true
+    }
+
     // TODO 変更をEditTextに反映される用。無くす方法考える
     private var _changeDataEvent = MutableLiveData<Boolean>()
     val changeDataEvent: LiveData<Boolean>

@@ -56,6 +56,16 @@ class AddDiaryFragment : Fragment() {
             }
         })
 
+
+        addDiaryViewModel.navigateToAddProfile.observe(viewLifecycleOwner, Observer {
+            if (it == true) {
+                this.findNavController().navigate(
+                    AddDiaryFragmentDirections.actionAddDiaryFragmentToAddProfileFragment()
+                )
+                addDiaryViewModel.doneNavigateToAddProfile()
+            }
+        })
+
         binding.spinnerAddName.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(parent: AdapterView<*>?) {}

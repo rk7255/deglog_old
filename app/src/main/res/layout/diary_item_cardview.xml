@@ -52,7 +52,7 @@
                 android:id="@+id/image_item_weight"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_dummy"
+                android:src="@drawable/ic_weight"
                 app:diaryImageGone="@{diary.weight}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -77,7 +77,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="16dp"
-                android:src="@drawable/ic_dummy"
+                android:src="@drawable/ic_length"
                 app:diaryImageGone="@{diary.length}"
                 app:layout_constraintStart_toStartOf="@id/image_item_weight"
                 app:layout_constraintTop_toBottomOf="@id/image_item_weight" />
@@ -102,7 +102,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="16dp"
-                android:src="@drawable/ic_dummy"
+                android:src="@drawable/ic_note"
                 app:diaryImageGone="@{diary.memo}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@id/image_item_length"
