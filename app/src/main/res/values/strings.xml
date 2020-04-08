@@ -2,4 +2,26 @@
     <string name="app_name">ペット管理</string>
 
     <string name="dummy_description">Dummy Description</string>
+    <string name="add_diary">Diaryの追加</string>
+    <string name="name">名前</string>
+    <string name="weight">体重</string>
+    <string name="weight_hint">weight</string>
+    <string name="length">体長</string>
+    <string name="length_hint">length</string>
+    <string name="memo">メモ</string>
+    <string name="memo_hint">memo</string>
+    <string name="button_add">追加</string>
+    <string name="sign_up">profileを登録してください！</string>
+    <string name="button_plus">+</string>
+    <string name="button_minus">-</string>
+    <string name="button_clear">C</string>
+    <string name="title_add_pet">新規ペットの追加</string>
+    <string name="type">種類</string>
+    <string name="type_hint">デグー</string>
+    <string name="sex">性別</string>
+    <string name="sex_hint">オス</string>
+    <string name="birthday">誕生日</string>
+    <string name="debug_clear_database">DBクリア</string>
+    <string name="date_hint">2020/01/01</string>
+
 </resources>

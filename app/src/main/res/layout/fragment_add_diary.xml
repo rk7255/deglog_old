@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="addDiaryViewModel"
             type="jp.ryuk.deglog_a01.adddiary.AddDiaryViewModel" />
@@ -19,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="追加"
+            android:text="@string/add_diary"
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="24dp"
-            android:text="名前"
+            android:text="@string/name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_add_title" />
 
@@ -52,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="体重"
+            android:text="@string/weight"
             app:layout_constraintStart_toStartOf="@+id/textView_add_name"
             app:layout_constraintTop_toBottomOf="@+id/textView_add_name" />
 
@@ -61,7 +62,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="weight"
+            android:hint="@string/weight_hint"
+            android:importantForAutofill="no"
             android:inputType="number"
             android:text="@={addDiaryViewModel.weight}"
             app:layout_constraintBottom_toBottomOf="@+id/button7"
@@ -74,7 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
-            android:text="体長"
+            android:text="@string/length"
             app:layout_constraintStart_toStartOf="@+id/textView_add_weight"
             app:layout_constraintTop_toBottomOf="@+id/textView_add_weight" />
 
@@ -83,7 +85,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="length"
+            android:hint="@string/length_hint"
+            android:importantForAutofill="no"
             android:inputType="number"
             android:text="@={addDiaryViewModel.length}"
             app:layout_constraintBottom_toBottomOf="@+id/button9"
@@ -96,7 +99,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
-            android:text="メモ"
+            android:text="@string/memo"
             app:layout_constraintStart_toStartOf="@+id/textView_add_length"
             app:layout_constraintTop_toBottomOf="@+id/textView_add_length" />
 
@@ -108,7 +111,8 @@
             android:layout_marginEnd="32dp"
             android:ems="10"
             android:gravity="start|top"
-            android:hint="memo"
+            android:hint="@string/memo_hint"
+            android:importantForAutofill="no"
             android:inputType="textMultiLine"
             android:text="@={addDiaryViewModel.memo}"
             app:layout_constraintEnd_toEndOf="parent"
@@ -120,9 +124,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:onClick="@{() -> addDiaryViewModel.addNewDiary()}"
-            android:text="OK"
             android:enabled="@{addDiaryViewModel.enable}"
+            android:onClick="@{() -> addDiaryViewModel.addNewDiary()}"
+            android:text="@string/button_add"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText_add_memo" />
@@ -132,7 +136,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="profileを登録してください！"
+            android:text="@string/sign_up"
             app:isGone="@{addDiaryViewModel.enable}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -144,7 +148,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:onClick="@{() -> addDiaryViewModel.plusWeight()}"
-            android:text="+"
+            android:text="@string/button_plus"
             app:layout_constraintBottom_toBottomOf="@+id/editText_add_weight"
             app:layout_constraintEnd_toStartOf="@+id/button10"
             app:layout_constraintTop_toTopOf="@+id/editText_add_weight"
@@ -156,7 +160,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:onClick="@{() -> addDiaryViewModel.minusWeight()}"
-            android:text="-"
+            android:text="@string/button_minus"
             app:layout_constraintStart_toEndOf="@+id/textView_add_weight"
             app:layout_constraintTop_toTopOf="@+id/textView_add_weight" />
 
@@ -167,7 +171,7 @@
             android:layout_marginEnd="8dp"
             android:onClick="@{() -> addDiaryViewModel.plusLength()}"
 
-            android:text="+"
+            android:text="@string/button_plus"
             app:layout_constraintBottom_toBottomOf="@+id/editText_add_length"
             app:layout_constraintEnd_toStartOf="@+id/button2"
             app:layout_constraintTop_toTopOf="@+id/editText_add_length" />
@@ -177,8 +181,8 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="-"
             android:onClick="@{() -> addDiaryViewModel.minusLength()}"
+            android:text="@string/button_minus"
 
             app:layout_constraintStart_toEndOf="@+id/textView_add_length"
             app:layout_constraintTop_toTopOf="@+id/textView_add_length" />
@@ -188,8 +192,8 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
-            android:text="C"
             android:onClick="@{() -> addDiaryViewModel.clearLength()}"
+            android:text="@string/button_clear"
             app:layout_constraintBottom_toBottomOf="@+id/button8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/button8" />
@@ -199,8 +203,8 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
-            android:text="C"
             android:onClick="@{() -> addDiaryViewModel.clearWeight()}"
+            android:text="@string/button_clear"
             app:layout_constraintBottom_toBottomOf="@+id/button6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/button6" />
@@ -210,8 +214,8 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
-            android:text="+"
             android:onClick="@{() -> addDiaryViewModel.onClickAddProfile()}"
+            android:text="@string/button_plus"
             app:layout_constraintBottom_toBottomOf="@+id/spinner_add_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/spinner_add_name" />
