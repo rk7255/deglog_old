@@ -25,7 +25,7 @@ class AddDiaryViewModel (
 
     var weight: String? = null
     var length: String? = null
-    var memo: String = ""
+    var memo: String? = null
 
     /*
      * 初期化

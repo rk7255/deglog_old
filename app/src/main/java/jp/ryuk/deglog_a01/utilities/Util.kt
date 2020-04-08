@@ -9,7 +9,7 @@ import java.util.*
  */
 @SuppressLint("SimpleDateFormat")
 fun convertYMDToLong(y: Int, m: Int, d: Int) : Long {
-    val calendar = Calendar.getInstance();
+    val calendar = Calendar.getInstance()
     calendar.set(y, m, d, 0, 0, 0)
     return calendar.timeInMillis
 }
@@ -38,7 +38,7 @@ fun convertStringToInt(str: String?): Int? {
 }
 
 /*
- * 表示用
+ * 体重と体長の単位付与
  */
 fun convertWeight(weight: Int?): String? {
     return if (weight == null) { null } else { "$weight g" }
@@ -46,8 +46,4 @@ fun convertWeight(weight: Int?): String? {
 
 fun convertLength(length: Int?): String? {
     return if (length == null) { null } else { "$length mm" }
-}
-
-fun convertMemo(memo: String): String? {
-    return if (memo.isEmpty()) { null } else { memo }
 }

@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import jp.ryuk.deglog_a01.database.Diary
-import jp.ryuk.deglog_a01.databinding.DiaryItemBinding
 import jp.ryuk.deglog_a01.databinding.DiaryItemCardviewBinding
 
 class DiaryAdapter(val clickListener: DiaryListener) : ListAdapter<Diary, DiaryAdapter.ViewHolder>(DiaryDiffCallback()) {

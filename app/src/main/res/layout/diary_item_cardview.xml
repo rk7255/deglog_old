@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View" />
         <variable
             name="diary"
             type="jp.ryuk.deglog_a01.database.Diary" />
@@ -16,8 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:onClick="@{() -> clickListener.onClick(diary)}">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,12 +31,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="end"
-                app:diaryDateFormatted="@{diary}"
-                tools:text="2020/03/03 12:30"
                 android:textColor="@color/gray"
                 android:textSize="14sp"
+                app:diaryDateFormatted="@{diary}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="2020/03/03 12:30" />
 
             <TextView
                 android:id="@+id/text_item_name"
@@ -43,17 +44,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:gravity="end"
-                tools:text="ナツ"
+                android:textSize="18sp"
                 app:diaryName="@{diary}"
                 app:layout_constraintEnd_toEndOf="@id/text_item_date"
-                app:layout_constraintTop_toBottomOf="@id/text_item_date" />
+                app:layout_constraintTop_toBottomOf="@id/text_item_date"
+                tools:text="ナツ" />
 
             <ImageView
                 android:id="@+id/image_item_weight"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:contentDescription="@string/dummy_description"
                 android:src="@drawable/ic_weight"
-                app:diaryImageGone="@{diary.weight}"
+                android:visibility="@{diary.weight == null ? View.GONE : View.VISIBLE}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -64,6 +67,7 @@
                 android:layout_marginStart="8dp"
                 android:gravity="center|start"
                 android:textSize="18sp"
+                android:visibility="@{diary.weight == null ? View.GONE : View.VISIBLE}"
                 app:diaryWeightFormatted="@{diary.weight}"
                 app:layout_constraintBottom_toBottomOf="@+id/image_item_weight"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -71,14 +75,14 @@
                 app:layout_constraintTop_toTopOf="@+id/image_item_weight"
                 tools:text="300 g" />
 
-
             <ImageView
                 android:id="@+id/image_item_length"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="16dp"
+                android:contentDescription="@string/dummy_description"
                 android:src="@drawable/ic_length"
-                app:diaryImageGone="@{diary.length}"
+                android:visibility="@{diary.length == null ? View.GONE : View.VISIBLE}"
                 app:layout_constraintStart_toStartOf="@id/image_item_weight"
                 app:layout_constraintTop_toBottomOf="@id/image_item_weight" />
 
@@ -89,6 +93,7 @@
                 android:layout_marginStart="8dp"
                 android:gravity="center|start"
                 android:textSize="18sp"
+                android:visibility="@{diary.length == null ? View.GONE : View.VISIBLE}"
                 app:diaryLengthFormatted="@{diary.length}"
                 app:layout_constraintBottom_toBottomOf="@+id/image_item_length"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -96,14 +101,14 @@
                 app:layout_constraintTop_toTopOf="@+id/image_item_length"
                 tools:text="300 mm" />
 
-
             <ImageView
                 android:id="@+id/image_item_memo"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="16dp"
+                android:contentDescription="@string/dummy_description"
                 android:src="@drawable/ic_note"
-                app:diaryImageGone="@{diary.memo}"
+                android:visibility="@{diary.memo == null ? View.GONE : View.VISIBLE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@id/image_item_length"
                 app:layout_constraintTop_toBottomOf="@id/image_item_length" />
@@ -113,20 +118,20 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="8dp"
-                android:gravity="center|start"
-                tools:text="めもです"
-                android:textSize="18sp"
                 android:ellipsize="end"
+                android:gravity="center|start"
                 android:singleLine="true"
-                app:diaryMemoFormatted="@{diary}"
+                android:textSize="18sp"
+                android:visibility="@{diary.memo == null ? View.GONE : View.VISIBLE}"
+                app:diaryMemoFormatted="@{diary.memo}"
                 app:layout_constraintBottom_toBottomOf="@+id/image_item_memo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/image_item_memo"
-                app:layout_constraintTop_toTopOf="@+id/image_item_memo" />
-
+                app:layout_constraintTop_toTopOf="@+id/image_item_memo"
+                tools:text="めもです" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     </androidx.cardview.widget.CardView>
+
 </layout>
