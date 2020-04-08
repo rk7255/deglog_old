@@ -29,7 +29,7 @@ class DiaryDetailFragment : Fragment() {
         val arguments = DiaryDetailFragmentArgs.fromBundle(arguments!!)
 
         val dataSource = DiaryDatabase.getInstance(application).diaryDatabaseDao
-        val viewModelFactory = DiaryDetailViewModelFactory(arguments.animalKey, dataSource)
+        val viewModelFactory = DiaryDetailViewModelFactory(arguments.diaryKey, dataSource)
         val diaryDetailViewModel = ViewModelProvider(this, viewModelFactory).get(DiaryDetailViewModel::class.java)
         binding.diaryDetailViewModel= diaryDetailViewModel
         binding.lifecycleOwner = this

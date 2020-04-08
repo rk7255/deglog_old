@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import jp.ryuk.deglog_a01.database.Diary
 import jp.ryuk.deglog_a01.databinding.DiaryItemBinding
+import jp.ryuk.deglog_a01.databinding.DiaryItemCardviewBinding
 
 class DiaryAdapter(val clickListener: DiaryListener) : ListAdapter<Diary, DiaryAdapter.ViewHolder>(DiaryDiffCallback()) {
 
@@ -18,7 +19,7 @@ class DiaryAdapter(val clickListener: DiaryListener) : ListAdapter<Diary, DiaryA
         holder.bind(getItem(position)!!, clickListener)
     }
 
-    class ViewHolder private constructor(val binding: DiaryItemBinding): RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder private constructor(val binding: DiaryItemCardviewBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Diary, clickListener: DiaryListener) {
             binding.diary = item
             binding.clickListener = clickListener
@@ -27,7 +28,7 @@ class DiaryAdapter(val clickListener: DiaryListener) : ListAdapter<Diary, DiaryA
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = DiaryItemBinding.inflate(layoutInflater, parent, false)
+                val binding = DiaryItemCardviewBinding.inflate(layoutInflater, parent, false)
 
                 return ViewHolder(binding)
             }

@@ -61,7 +61,7 @@
         android:label="fragment_diary_detail"
         tools:layout="@layout/fragment_diary_detail" >
         <argument
-            android:name="animalKey"
+            android:name="diaryKey"
             app:argType="long" />
         <action
             android:id="@+id/action_diaryDetailFragment_to_diaryFragment"
