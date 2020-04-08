@@ -43,7 +43,7 @@ fun TextView.setDiaryName(item: Diary?) {
 @BindingAdapter("diaryDateFormatted")
 fun TextView.setDiaryDateFormatted(item: Diary?){
     item?.let {
-        text = convertLongToDateString(item.date)
+        text = convertLongToDateStringInTime(item.date)
         visibility = View.VISIBLE
 
     }

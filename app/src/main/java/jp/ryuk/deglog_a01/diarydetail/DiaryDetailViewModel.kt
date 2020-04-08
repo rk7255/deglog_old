@@ -3,7 +3,6 @@ package jp.ryuk.deglog_a01.diarydetail
 import androidx.lifecycle.*
 import jp.ryuk.deglog_a01.database.Diary
 import jp.ryuk.deglog_a01.database.DiaryDatabaseDao
-import jp.ryuk.deglog_a01.utilities.formatAnimals
 import kotlinx.coroutines.Job
 
 class DiaryDetailViewModel(
@@ -18,7 +17,7 @@ class DiaryDetailViewModel(
     fun getAnimal() = animal
 
     val animalString = Transformations.map(animal) {
-        formatAnimals(animal.value)
+//        formatAnimals(animal.value)
     }
 
     init {

@@ -4,10 +4,8 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import jp.ryuk.deglog_a01.database.Profile
 import jp.ryuk.deglog_a01.database.ProfileDatabaseDao
-import jp.ryuk.deglog_a01.utilities.formatProfiles
 import kotlinx.coroutines.*
 import java.util.*
 
@@ -26,11 +24,6 @@ class AddProfileViewModel(
     var editTextBirthday: Long = 0L
 
     private val profiles = database.getProfiles()
-
-    val profileString = Transformations.map(profiles) {
-        formatProfiles(it)
-    }
-
 
     private var _navigateToDiary = MutableLiveData<Boolean?>()
     val navigateToDiary: LiveData<Boolean?>

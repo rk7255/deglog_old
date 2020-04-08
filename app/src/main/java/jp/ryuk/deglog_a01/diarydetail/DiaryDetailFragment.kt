@@ -14,9 +14,7 @@ import jp.ryuk.deglog_a01.R
 import jp.ryuk.deglog_a01.database.DiaryDatabase
 import jp.ryuk.deglog_a01.databinding.FragmentDiaryDetailBinding
 
-/**
- * A simple [Fragment] subclass.
- */
+
 class DiaryDetailFragment : Fragment() {
 
     override fun onCreateView(
