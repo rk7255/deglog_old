@@ -28,7 +28,7 @@ class AddDiaryViewModel (
     var memo: String? = null
 
     /*
-     * 初期化
+     * Initialize
      */
     init {
         initialize()
@@ -74,7 +74,7 @@ class AddDiaryViewModel (
     }
 
     /*
-     * ボタンのクリックイベント
+     * onClick
      */
     fun addNewDiary() {
         uiScope.launch {
@@ -82,13 +82,13 @@ class AddDiaryViewModel (
             newDiary.name = selectedName
             newDiary.weight = convertStringToInt(weight)
             newDiary.length = convertStringToInt(length)
-            newDiary.memo = memo
-            Log.d("TEST", "insert: $newDiary")
+            newDiary.memo = if (memo.isNullOrEmpty()) null else memo
+            Log.d("DEBUG_DATABASE", "Diary Insert -> $newDiary")
             insert(newDiary)
             _navigateToDiary.value = true
         }
     }
-    // TODO すっきりさせたい
+    // ここすっきりさせたい
     fun plusWeight() {
         weight = plus(weight)
         _changeDataEvent.value = true
@@ -123,7 +123,7 @@ class AddDiaryViewModel (
     }
 
     /*
-     *  LiveData関連
+     *  LiveData
      */
     private var _navigateToDiary = MutableLiveData<Boolean>()
     val navigateToDiary: LiveData<Boolean>
@@ -142,7 +142,7 @@ class AddDiaryViewModel (
         _navigateToAddProfile.value = true
     }
 
-    // TODO 変更をEditTextに反映される用。無くす方法考える
+    // 変更をEditTextに反映させる用  無くせるはず
     private var _changeDataEvent = MutableLiveData<Boolean>()
     val changeDataEvent: LiveData<Boolean>
         get() = _changeDataEvent
@@ -151,7 +151,7 @@ class AddDiaryViewModel (
     }
 
     /*
-     * データベース操作
+     * Database
      */
     private suspend fun insert(diary: Diary) {
         withContext(Dispatchers.IO) {

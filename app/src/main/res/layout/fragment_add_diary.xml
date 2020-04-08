@@ -16,7 +16,7 @@
         tools:context=".adddiary.AddDiaryFragment">
 
         <TextView
-            android:id="@+id/textView_add_title"
+            android:id="@+id/text_add_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -27,14 +27,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView_add_name"
+            android:id="@+id/text_add_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="24dp"
             android:text="@string/name"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_add_title" />
+            app:layout_constraintTop_toBottomOf="@+id/text_add_title" />
 
         <Spinner
             android:id="@+id/spinner_add_name"
@@ -43,22 +43,22 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:entries="@{addDiaryViewModel.names}"
-            app:layout_constraintEnd_toStartOf="@+id/button4"
-            app:layout_constraintStart_toEndOf="@+id/textView_add_name"
-            app:layout_constraintTop_toTopOf="@+id/textView_add_name"
+            app:layout_constraintEnd_toStartOf="@+id/button_go_add_profile"
+            app:layout_constraintStart_toEndOf="@+id/text_add_name"
+            app:layout_constraintTop_toTopOf="@+id/text_add_name"
             tools:listitem="@android:layout/activity_list_item" />
 
         <TextView
-            android:id="@+id/textView_add_weight"
+            android:id="@+id/text_add_weight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="@string/weight"
-            app:layout_constraintStart_toStartOf="@+id/textView_add_name"
-            app:layout_constraintTop_toBottomOf="@+id/textView_add_name" />
+            app:layout_constraintStart_toStartOf="@+id/text_add_name"
+            app:layout_constraintTop_toBottomOf="@+id/text_add_name" />
 
         <EditText
-            android:id="@+id/editText_add_weight"
+            android:id="@+id/edit_add_weight"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -66,22 +66,22 @@
             android:importantForAutofill="no"
             android:inputType="number"
             android:text="@={addDiaryViewModel.weight}"
-            app:layout_constraintBottom_toBottomOf="@+id/button7"
-            app:layout_constraintEnd_toStartOf="@+id/button6"
-            app:layout_constraintStart_toEndOf="@+id/button7"
-            app:layout_constraintTop_toTopOf="@+id/button7" />
+            app:layout_constraintBottom_toBottomOf="@+id/button_weight_minus"
+            app:layout_constraintEnd_toStartOf="@+id/button_weight_plus"
+            app:layout_constraintStart_toEndOf="@+id/button_weight_minus"
+            app:layout_constraintTop_toTopOf="@+id/button_weight_minus" />
 
         <TextView
-            android:id="@+id/textView_add_length"
+            android:id="@+id/text_add_length"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
             android:text="@string/length"
-            app:layout_constraintStart_toStartOf="@+id/textView_add_weight"
-            app:layout_constraintTop_toBottomOf="@+id/textView_add_weight" />
+            app:layout_constraintStart_toStartOf="@+id/text_add_weight"
+            app:layout_constraintTop_toBottomOf="@+id/text_add_weight" />
 
         <EditText
-            android:id="@+id/editText_add_length"
+            android:id="@+id/edit_add_length"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -89,22 +89,22 @@
             android:importantForAutofill="no"
             android:inputType="number"
             android:text="@={addDiaryViewModel.length}"
-            app:layout_constraintBottom_toBottomOf="@+id/button9"
-            app:layout_constraintEnd_toStartOf="@+id/button8"
-            app:layout_constraintStart_toEndOf="@+id/button9"
-            app:layout_constraintTop_toBottomOf="@+id/button7" />
+            app:layout_constraintBottom_toBottomOf="@+id/button_length_minus"
+            app:layout_constraintEnd_toStartOf="@+id/button_length_plus"
+            app:layout_constraintStart_toEndOf="@+id/button_length_minus"
+            app:layout_constraintTop_toBottomOf="@+id/button_weight_minus" />
 
         <TextView
-            android:id="@+id/textView_add_memo"
+            android:id="@+id/text_add_memo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
             android:text="@string/memo"
-            app:layout_constraintStart_toStartOf="@+id/textView_add_length"
-            app:layout_constraintTop_toBottomOf="@+id/textView_add_length" />
+            app:layout_constraintStart_toStartOf="@+id/text_add_length"
+            app:layout_constraintTop_toBottomOf="@+id/text_add_length" />
 
         <EditText
-            android:id="@+id/editText_add_memo"
+            android:id="@+id/edit_add_memo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -116,11 +116,11 @@
             android:inputType="textMultiLine"
             android:text="@={addDiaryViewModel.memo}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView_add_memo"
-            app:layout_constraintTop_toTopOf="@+id/textView_add_memo" />
+            app:layout_constraintStart_toEndOf="@+id/text_add_memo"
+            app:layout_constraintTop_toTopOf="@+id/text_add_memo" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button_add_new_diary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -129,10 +129,10 @@
             android:text="@string/button_add"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText_add_memo" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_add_memo" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/text_sign_up"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -140,77 +140,77 @@
             app:isGone="@{addDiaryViewModel.enable}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
+            app:layout_constraintTop_toBottomOf="@+id/button_add_new_diary" />
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/button_weight_plus"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:onClick="@{() -> addDiaryViewModel.plusWeight()}"
             android:text="@string/button_plus"
-            app:layout_constraintBottom_toBottomOf="@+id/editText_add_weight"
-            app:layout_constraintEnd_toStartOf="@+id/button10"
-            app:layout_constraintTop_toTopOf="@+id/editText_add_weight"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_add_weight"
+            app:layout_constraintEnd_toStartOf="@+id/button_weight_clear"
+            app:layout_constraintTop_toTopOf="@+id/edit_add_weight"
             app:layout_constraintVertical_bias="0.0" />
 
         <Button
-            android:id="@+id/button7"
+            android:id="@+id/button_weight_minus"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:onClick="@{() -> addDiaryViewModel.minusWeight()}"
             android:text="@string/button_minus"
-            app:layout_constraintStart_toEndOf="@+id/textView_add_weight"
-            app:layout_constraintTop_toTopOf="@+id/textView_add_weight" />
+            app:layout_constraintStart_toEndOf="@+id/text_add_weight"
+            app:layout_constraintTop_toTopOf="@+id/text_add_weight" />
 
         <Button
-            android:id="@+id/button8"
+            android:id="@+id/button_length_plus"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:onClick="@{() -> addDiaryViewModel.plusLength()}"
 
             android:text="@string/button_plus"
-            app:layout_constraintBottom_toBottomOf="@+id/editText_add_length"
-            app:layout_constraintEnd_toStartOf="@+id/button2"
-            app:layout_constraintTop_toTopOf="@+id/editText_add_length" />
+            app:layout_constraintBottom_toBottomOf="@+id/edit_add_length"
+            app:layout_constraintEnd_toStartOf="@+id/button_length_clear"
+            app:layout_constraintTop_toTopOf="@+id/edit_add_length" />
 
         <Button
-            android:id="@+id/button9"
+            android:id="@+id/button_length_minus"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:onClick="@{() -> addDiaryViewModel.minusLength()}"
             android:text="@string/button_minus"
 
-            app:layout_constraintStart_toEndOf="@+id/textView_add_length"
-            app:layout_constraintTop_toTopOf="@+id/textView_add_length" />
+            app:layout_constraintStart_toEndOf="@+id/text_add_length"
+            app:layout_constraintTop_toTopOf="@+id/text_add_length" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/button_length_clear"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
             android:onClick="@{() -> addDiaryViewModel.clearLength()}"
             android:text="@string/button_clear"
-            app:layout_constraintBottom_toBottomOf="@+id/button8"
+            app:layout_constraintBottom_toBottomOf="@+id/button_length_plus"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/button8" />
+            app:layout_constraintTop_toTopOf="@+id/button_length_plus" />
 
         <Button
-            android:id="@+id/button10"
+            android:id="@+id/button_weight_clear"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
             android:onClick="@{() -> addDiaryViewModel.clearWeight()}"
             android:text="@string/button_clear"
-            app:layout_constraintBottom_toBottomOf="@+id/button6"
+            app:layout_constraintBottom_toBottomOf="@+id/button_weight_plus"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/button6" />
+            app:layout_constraintTop_toTopOf="@+id/button_weight_plus" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/button_go_add_profile"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"

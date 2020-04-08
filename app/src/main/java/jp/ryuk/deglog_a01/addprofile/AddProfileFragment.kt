@@ -57,23 +57,18 @@ class AddProfileFragment : Fragment() {
         addProfileViewModel: AddProfileViewModel,
         binding: FragmentAddProfileBinding
     ) {
-        try {
-            val dpb = DatePickerDialog(
-                this.requireContext(), DatePickerDialog
-                    .OnDateSetListener { _, y, m, d ->
-                        addProfileViewModel.editTextBirthday = convertYMDToLong(y, m, d)
-                        binding.editTextBirthday.setText(
-                            convertLongToDateString(addProfileViewModel.editTextBirthday)
-                        )
-                    },
-                addProfileViewModel.year,
-                addProfileViewModel.month + 1,
-                addProfileViewModel.day
-            )
-            dpb.show()
-        } catch (e: Exception) {
-            Log.d("TEST", "DatePickerDialog: $e")
-        }
+        val dpb = DatePickerDialog(
+            this.requireContext(), DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
+                    addProfileViewModel.editTextBirthday = convertYMDToLong(year, month, dayOfMonth)
+                    binding.editProfBirthday.setText(
+                        convertLongToDateString(addProfileViewModel.editTextBirthday)
+                    )
+            },
+            addProfileViewModel.year,
+            addProfileViewModel.month,
+            addProfileViewModel.day
+        )
+        dpb.show()
 
         addProfileViewModel.doneShowDatePickerDialog()
     }

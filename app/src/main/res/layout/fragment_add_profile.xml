@@ -16,7 +16,7 @@
         tools:context=".addprofile.AddProfileFragment">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/text_prof_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -26,17 +26,17 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/text_prof_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/text_prof_title" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/edit_prof_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -46,20 +46,20 @@
             android:text="@={addProfileViewModel.editTextName}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            app:layout_constraintTop_toBottomOf="@+id/text_prof_name" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/text_prof_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/type"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_prof_name" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/edit_prof_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -69,20 +69,20 @@
             android:text="@={addProfileViewModel.editTextType}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintTop_toBottomOf="@+id/text_prof_type" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/text_prof_sex"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/sex"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText2" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_prof_type" />
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/edit_prof_sex"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -92,44 +92,44 @@
             android:text="@={addProfileViewModel.editTextSex}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/text_prof_sex" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/text_prof_birthday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/birthday"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText4" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_prof_sex" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/button_prof_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:onClick="@{() -> addProfileViewModel.addNewProfile()}"
             android:text="@string/button_add"
-            app:layout_constraintEnd_toStartOf="@+id/button5"
+            app:layout_constraintEnd_toStartOf="@+id/button_prof_database_clear"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText_birthday" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_prof_birthday" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/button_prof_database_clear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="@{() -> addProfileViewModel.onClear()}"
             android:text="@string/debug_clear_database"
-            app:layout_constraintBottom_toBottomOf="@+id/button3"
+            app:layout_constraintBottom_toBottomOf="@+id/button_prof_add"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/button3"
-            app:layout_constraintTop_toTopOf="@+id/button3" />
+            app:layout_constraintStart_toEndOf="@+id/button_prof_add"
+            app:layout_constraintTop_toTopOf="@+id/button_prof_add" />
 
         <EditText
-            android:id="@+id/editText_birthday"
+            android:id="@+id/edit_prof_birthday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -140,7 +140,7 @@
             android:onClick="@{() -> addProfileViewModel.onShowDatePickerDialog()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+            app:layout_constraintTop_toBottomOf="@+id/text_prof_birthday" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

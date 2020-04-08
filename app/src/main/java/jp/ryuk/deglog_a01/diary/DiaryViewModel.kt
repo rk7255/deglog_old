@@ -1,9 +1,12 @@
 package jp.ryuk.deglog_a01.diary
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
+import jp.ryuk.deglog_a01.database.Diary
 import jp.ryuk.deglog_a01.database.DiaryDatabaseDao
 import kotlinx.coroutines.*
 
@@ -14,14 +17,33 @@ class DiaryViewModel(
 
     private var viewModelJob = Job()
     private var uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-    var diaries = diaryDatabase.getDiaries()
+    var diaries = MediatorLiveData<List<Diary>>()
 
     init {
-        diaries = diaryDatabase.getDiaries()
+        initialize()
+    }
+
+    private fun initialize() {
+        uiScope.launch {
+            diaries.value = getDiaries()
+            Log.d("DEBUG_DATABASE", "Get Diaries -> find ${diaries.value?.size} Diaries")
+        }
     }
 
     /*
-     *  LiveData関連
+     * onClick
+     */
+    fun onClear() {
+        uiScope.launch {
+            clear()
+            diaries.value = getDiaries()
+            Log.d("DEBUG_DATABASE", "Clear Diaries -> find ${diaries.value?.size} Diaries")
+        }
+    }
+
+
+    /*
+     *  LiveData
      */
     private var _navigateToAddDiary = MutableLiveData<Boolean>()
     val navigateToAddDiary: LiveData<Boolean>
@@ -43,38 +65,18 @@ class DiaryViewModel(
         _navigateToDiaryDetail.value = id
     }
 
-//    private val _navigateToAddProfile = MutableLiveData<Boolean>()
-//    val navigateToAddProfile: LiveData<Boolean>
-//        get() = _navigateToAddProfile
-//    fun doneNavigateToAddProfile() {
-//        _navigateToAddProfile.value = false
-//    }
-//    fun onClickAddProfile() {
-//        _navigateToAddProfile.value = true
-//    }
-
-
     /*
-     * データベース操作
+     * Database
      */
-//    private suspend fun insert(diary: Diary) {
-//        withContext(Dispatchers.IO) {
-//            diaryDatabase.insert(diary)
-//        }
-//    }
-//    private suspend fun update(diary: Diary) {
-//        withContext(Dispatchers.IO) {
-//            diaryDatabase.update(diary)
-//        }
-//    }
+    private suspend fun  getDiaries(): List<Diary> {
+        return withContext(Dispatchers.IO) {
+            diaryDatabase.getDiaries()
+        }
+    }
+
     private suspend fun clear() {
         withContext(Dispatchers.IO) {
             diaryDatabase.clear()
-        }
-    }
-    fun onClear() {
-        uiScope.launch {
-            clear()
         }
     }
 

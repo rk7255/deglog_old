@@ -11,16 +11,16 @@ fun TextView.isGone(boolean: Boolean) {
 }
 // 名前
 @BindingAdapter("diaryName")
-fun TextView.setDiaryName(item: Diary?) {
+fun TextView.setDiaryName(item: String?) {
     item?.let {
-        text = item.name
+        text = item
     }
 }
 // 日付
 @BindingAdapter("diaryDateFormatted")
-fun TextView.setDiaryDateFormatted(item: Diary?){
+fun TextView.setDiaryDateFormatted(item: Long?){
     item?.let {
-        text = convertLongToDateStringInTime(item.date)
+        text = convertLongToDateStringInTime(item)
     }
 }
 

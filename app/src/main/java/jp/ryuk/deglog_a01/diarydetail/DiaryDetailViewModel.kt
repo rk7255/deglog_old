@@ -1,47 +1,56 @@
 package jp.ryuk.deglog_a01.diarydetail
 
+import android.util.Log
 import androidx.lifecycle.*
 import jp.ryuk.deglog_a01.database.Diary
 import jp.ryuk.deglog_a01.database.DiaryDatabaseDao
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.*
 
 class DiaryDetailViewModel(
-    private val animalKey: Long = 0L,
-    val database: DiaryDatabaseDao
+    private val diaryKey: Long = 0L,
+    private val diaryDatabase: DiaryDatabaseDao
 ) : ViewModel() {
 
     private val viewModelJob = Job()
+    private var uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private val animal = MediatorLiveData<Diary>()
-
-    fun getAnimal() = animal
-
-    val animalString = Transformations.map(animal) {
-//        formatAnimals(animal.value)
-    }
+    val diary = MediatorLiveData<Diary>()
 
     init {
-        // TODO AnimalDatabase削除により動作せず 直す
-//        animal.addSource(database.getDiary(animalKey), animal::setValue)
+        initialize()
     }
 
-    private val _navigateToDiary = MutableLiveData<Boolean?>()
+    private fun initialize() {
+        uiScope.launch {
+            diary.value = getDiary(diaryKey)
+            Log.d("DEBUG_DATABASE", "Get DiaryID:$diaryKey -> ${diary.value}")
+        }
+    }
 
-    val navigateToDiary: LiveData<Boolean?>
+    /*
+     * LiveData
+     */
+    private val _navigateToDiary = MutableLiveData<Boolean>()
+    val navigateToDiary: LiveData<Boolean>
         get() = _navigateToDiary
+
+    fun doneNavigateToDiary() {
+        _navigateToDiary.value = false
+    }
+
+    /*
+     * Database
+     */
+    private suspend fun getDiary(key: Long): Diary {
+        return withContext(Dispatchers.IO) {
+            diaryDatabase.getDiary(key)
+        }
+    }
 
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
     }
 
-
-    fun doneNavigating() {
-        _navigateToDiary.value = null
-    }
-
-    fun onClose() {
-        _navigateToDiary.value = true
-    }
 
 }

@@ -39,7 +39,7 @@ class DiaryDetailFragment : Fragment() {
                 this.findNavController().navigate(
                     DiaryDetailFragmentDirections.actionDiaryDetailFragmentToDiaryFragment()
                 )
-                diaryDetailViewModel.doneNavigating()
+                diaryDetailViewModel.doneNavigateToDiary()
             }
         })
 

@@ -50,8 +50,8 @@ class AddDiaryFragment : Fragment() {
         // 値を変更したらEditTextに反映する
         addDiaryViewModel.changeDataEvent.observe(viewLifecycleOwner, Observer {
             if (it == true) {
-                binding.editTextAddWeight.setText(addDiaryViewModel.weight)
-                binding.editTextAddLength.setText(addDiaryViewModel.length)
+                binding.editAddWeight.setText(addDiaryViewModel.weight)
+                binding.editAddLength.setText(addDiaryViewModel.length)
                 addDiaryViewModel.doneChangeDataEvent()
             }
         })

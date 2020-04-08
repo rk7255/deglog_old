@@ -15,7 +15,7 @@ interface DiaryDatabaseDao {
     fun delete(diary: Diary)
 
     @Query("SELECT * FROM diary_table ORDER BY id DESC")
-    fun getDiaries() : LiveData<List<Diary>>
+    fun getDiaries() : List<Diary>
 
     @Query("SELECT * FROM diary_table WHERE id = :key")
     fun getDiary(key: Long) : Diary

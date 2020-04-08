@@ -1,6 +1,8 @@
 package jp.ryuk.deglog_a01.addprofile
 
 import android.app.Application
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -21,10 +23,57 @@ class AddProfileViewModel(
     var editTextName: String = ""
     var editTextType: String = ""
     var editTextSex: String = ""
-    var editTextBirthday: Long = 0L
+    var editTextBirthday: Long = System.currentTimeMillis()
 
-    private val profiles = database.getProfiles()
 
+    /*
+     * onClick
+     */
+    fun onClear() {
+        uiScope.launch {
+            clear()
+        }
+    }
+
+    fun addNewProfile() {
+        uiScope.launch {
+            if (editTextName.isEmpty()) {
+                Toast.makeText(context, "名前は入力必須項目です", Toast.LENGTH_LONG).show()
+            } else {
+                val newProfile = Profile()
+                newProfile.name = editTextName
+                newProfile.type = editTextType
+                newProfile.sex = editTextSex
+                newProfile.birthday = editTextBirthday
+                insertOrUpdate(newProfile)
+                _navigateToAddDiary.value = true
+            }
+        }
+    }
+
+    /*
+     * DatePicker
+     */
+    private val calender = Calendar.getInstance()
+    var year = calender.get(Calendar.YEAR)
+    var month = calender.get(Calendar.MONTH)
+    var day = calender.get(Calendar.DAY_OF_MONTH)
+
+    private var _showDatePickerDialog = MutableLiveData<Boolean>()
+    val showDatePickerDialog: LiveData<Boolean>
+        get() = _showDatePickerDialog
+
+    fun onShowDatePickerDialog() {
+        _showDatePickerDialog.value = true
+    }
+
+    fun doneShowDatePickerDialog() {
+        _showDatePickerDialog.value = false
+    }
+
+    /*
+     * LiveData
+     */
     private var _navigateToAddDiary = MutableLiveData<Boolean?>()
     val navigateToAddDiary: LiveData<Boolean?>
         get() = _navigateToAddDiary
@@ -33,6 +82,9 @@ class AddProfileViewModel(
         _navigateToAddDiary.value = false
     }
 
+    /*
+     * Database
+     */
     private suspend fun clear() {
         withContext(Dispatchers.IO) {
             database.clearAll()
@@ -44,30 +96,12 @@ class AddProfileViewModel(
             val profile = database.getProfile(newProfile.name)
 
             if (profile == null) {
+                Log.d("DEBUG_DATABASE", "Profile Insert -> $newProfile")
                 database.insert(newProfile)
             } else {
+                Log.d("DEBUG_DATABASE", "Profile Update -> $newProfile")
                 database.update(newProfile)
             }
-        }
-    }
-
-    fun onClear() {
-        uiScope.launch {
-            clear()
-        }
-    }
-
-
-    fun addNewProfile() {
-        uiScope.launch {
-
-            val newProfile = Profile()
-            newProfile.name = editTextName
-            newProfile.type = editTextType
-            newProfile.sex = editTextSex
-            newProfile.birthday = editTextBirthday
-            insertOrUpdate(newProfile)
-            _navigateToAddDiary.value = true
         }
     }
 
@@ -75,24 +109,5 @@ class AddProfileViewModel(
         super.onCleared()
         viewModelJob.cancel()
     }
-
-    val calender = Calendar.getInstance()
-    var year = calender.get(Calendar.YEAR)
-    var month = calender.get(Calendar.MONTH)
-    var day = calender.get(Calendar.DAY_OF_MONTH)
-
-    fun onShowDatePickerDialog() {
-        _showDatePickerDialog.value = true
-
-    }
-
-    private var _showDatePickerDialog = MutableLiveData<Boolean>()
-    val showDatePickerDialog: LiveData<Boolean>
-        get() = _showDatePickerDialog
-
-    fun doneShowDatePickerDialog() {
-        _showDatePickerDialog.value = false
-    }
-
 
 }

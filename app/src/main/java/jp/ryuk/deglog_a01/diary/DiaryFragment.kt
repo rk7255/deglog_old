@@ -67,15 +67,6 @@ class DiaryFragment : Fragment() {
             }
          })
 
-//        diaryViewModel.navigateToAddProfile.observe(viewLifecycleOwner, Observer {
-//            if (it == true) {
-//                this.findNavController().navigate(
-//                    DiaryFragmentDirections.actionDiaryFragmentToAddProfileFragment()
-//                )
-//                diaryViewModel.doneNavigateToAddProfile()
-//            }
-//        })
-
         return binding.root
     }
 
