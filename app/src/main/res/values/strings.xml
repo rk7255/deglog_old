@@ -24,5 +24,11 @@
     <string name="debug_clear_database">DBクリア</string>
     <string name="date_hint">2020/01/01</string>
     <string name="diary_filter">Diary Filter :</string>
+    <string name="diary">日誌</string>
+    <string name="chart">グラフ</string>
+    <string name="reminder">リマインダー</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
