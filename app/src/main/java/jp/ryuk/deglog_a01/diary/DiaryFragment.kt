@@ -24,13 +24,15 @@ class DiaryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding: FragmentDiaryBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_diary, container, false)
+            inflater, R.layout.fragment_diary, container, false
+        )
 
         val application = requireNotNull(this.activity).application
         val diaryDatabase = DiaryDatabase.getInstance(application).diaryDatabaseDao
         val viewModelFactory = DiaryViewModelFactory(diaryDatabase, application)
-        val diaryViewModel = ViewModelProvider(this, viewModelFactory).get(DiaryViewModel::class.java)
-        binding.diaryViewModel= diaryViewModel
+        val diaryViewModel =
+            ViewModelProvider(this, viewModelFactory).get(DiaryViewModel::class.java)
+        binding.diaryViewModel = diaryViewModel
         binding.lifecycleOwner = this
 
         /*
@@ -44,8 +46,11 @@ class DiaryFragment : Fragment() {
         diaryViewModel.diaries.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)
+                binding.recyclerviewDairy.visibility = View.VISIBLE
+                binding.recyclerviewDairy.scheduleLayoutAnimation()
             }
         })
+
 
         /*
          *  Navigation
@@ -66,7 +71,7 @@ class DiaryFragment : Fragment() {
                 )
                 diaryViewModel.doneNavigateToDiaryDetail()
             }
-         })
+        })
 
         binding.spinnerDiaryFilter.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
@@ -80,6 +85,7 @@ class DiaryFragment : Fragment() {
             }
 
         return binding.root
+
     }
 
 }

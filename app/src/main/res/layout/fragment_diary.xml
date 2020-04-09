@@ -16,34 +16,45 @@
         tools:context=".diary.DiaryFragment">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/text_diary_filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:text="@string/diary_filter"
+            app:layout_constraintBottom_toBottomOf="@+id/spinner_diary_filter"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/spinner_diary_filter" />
 
         <Spinner
             android:id="@+id/spinner_diary_filter"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
             android:entries="@{diaryViewModel.filterNames}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintStart_toEndOf="@+id/text_diary_filter"
             app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@android:layout/activity_list_item"/>
+            tools:listitem="@android:layout/activity_list_item" />
 
         <View
             android:id="@+id/filter_border"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            app:layout_constraintTop_toBottomOf="@id/spinner_diary_filter"
-            app:layout_constraintBottom_toTopOf="@+id/recyclerview_dairy" />
+            android:layout_marginTop="8dp"
+            android:background="@color/gray"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerview_dairy"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_diary_filter" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_dairy"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:layoutAnimation="@anim/layout_animation_fall_down"
+            android:padding="8dp"
+            android:visibility="invisible"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
