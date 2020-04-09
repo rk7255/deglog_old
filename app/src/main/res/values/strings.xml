@@ -23,5 +23,6 @@
     <string name="birthday">誕生日</string>
     <string name="debug_clear_database">DBクリア</string>
     <string name="date_hint">2020/01/01</string>
+    <string name="diary_filter">Diary Filter :</string>
 
 </resources>

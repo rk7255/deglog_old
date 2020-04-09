@@ -8,6 +8,7 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import jp.ryuk.deglog_a01.database.Diary
 import jp.ryuk.deglog_a01.database.DiaryDatabaseDao
+import jp.ryuk.deglog_a01.database.ProfileDatabaseDao
 import kotlinx.coroutines.*
 
 class DiaryViewModel(
@@ -19,16 +20,28 @@ class DiaryViewModel(
     private var uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
     var diaries = MediatorLiveData<List<Diary>>()
 
+    val filterNames = MutableLiveData<List<String?>>()
+
     init {
         initialize()
     }
 
     private fun initialize() {
         uiScope.launch {
-            diaries.value = getDiaries()
-            Log.d("DEBUG_DATABASE", "Get Diaries -> find ${diaries.value?.size} Diaries")
+            filterNames.value = getNames()
+            diaries.value = listOf()
         }
     }
+
+    fun showDiaries(name: String) {
+        uiScope.launch {
+            diaries.value = when (name) {
+                "all" -> getDiaries()
+                else -> getDiary(name)
+            }
+        }
+    }
+
 
     /*
      * onClick
@@ -40,7 +53,6 @@ class DiaryViewModel(
             Log.d("DEBUG_DATABASE", "Clear Diaries -> find ${diaries.value?.size} Diaries")
         }
     }
-
 
     /*
      *  LiveData
@@ -55,7 +67,7 @@ class DiaryViewModel(
         _navigateToAddDiary.value = false
     }
 
-    private val _navigateToDiaryDetail = MutableLiveData<Long>()
+    private var _navigateToDiaryDetail = MutableLiveData<Long>()
     val navigateToDiaryDetail: LiveData<Long>
         get() = _navigateToDiaryDetail
     fun doneNavigateToDiaryDetail() {
@@ -68,9 +80,27 @@ class DiaryViewModel(
     /*
      * Database
      */
+
+    private suspend fun getDiary(name: String): List<Diary> {
+        return withContext(Dispatchers.IO) {
+            diaryDatabase.getDiaryAtName(name)
+        }
+    }
+
     private suspend fun  getDiaries(): List<Diary> {
         return withContext(Dispatchers.IO) {
             diaryDatabase.getDiaries()
+        }
+    }
+
+    private suspend fun getNames(): List<String?> {
+        return withContext(Dispatchers.IO) {
+            val names = diaryDatabase.getNames()
+             if (names.isNullOrEmpty()) {
+                listOf("no entry")
+            } else {
+                listOf("all").plus(names)
+            }
         }
     }
 

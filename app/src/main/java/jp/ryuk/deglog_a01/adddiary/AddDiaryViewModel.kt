@@ -36,7 +36,6 @@ class AddDiaryViewModel (
 
     private fun initialize() {
         uiScope.launch {
-            getNames()
             names.value = getNames()
             selectedName = names.value!![0].toString()
         }

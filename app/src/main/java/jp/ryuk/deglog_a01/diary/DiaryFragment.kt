@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -26,8 +27,8 @@ class DiaryFragment : Fragment() {
             inflater, R.layout.fragment_diary, container, false)
 
         val application = requireNotNull(this.activity).application
-        val dataSource = DiaryDatabase.getInstance(application).diaryDatabaseDao
-        val viewModelFactory = DiaryViewModelFactory(dataSource, application)
+        val diaryDatabase = DiaryDatabase.getInstance(application).diaryDatabaseDao
+        val viewModelFactory = DiaryViewModelFactory(diaryDatabase, application)
         val diaryViewModel = ViewModelProvider(this, viewModelFactory).get(DiaryViewModel::class.java)
         binding.diaryViewModel= diaryViewModel
         binding.lifecycleOwner = this
@@ -66,6 +67,17 @@ class DiaryFragment : Fragment() {
                 diaryViewModel.doneNavigateToDiaryDetail()
             }
          })
+
+        binding.spinnerDiaryFilter.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+
+                override fun onItemSelected(
+                    parent: AdapterView<*>?, view: View?, position: Int, id: Long
+                ) {
+                    diaryViewModel.showDiaries(parent?.selectedItem.toString())
+                }
+            }
 
         return binding.root
     }
