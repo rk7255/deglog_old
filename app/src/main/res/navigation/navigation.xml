@@ -85,7 +85,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_chart"
-        android:name="jp.ryuk.deglog_a01.ChartFragment"
+        android:name="jp.ryuk.deglog_a01.chart.ChartFragment"
         android:label="fragment_chart"
         tools:layout="@layout/fragment_chart" />
     <fragment

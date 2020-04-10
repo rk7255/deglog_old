@@ -1,14 +1,12 @@
 package jp.ryuk.deglog_a01.diary
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import jp.ryuk.deglog_a01.database.Diary
 import jp.ryuk.deglog_a01.database.DiaryDatabaseDao
-import jp.ryuk.deglog_a01.database.ProfileDatabaseDao
 import kotlinx.coroutines.*
 
 class DiaryViewModel(
@@ -49,8 +47,7 @@ class DiaryViewModel(
     fun onClear() {
         uiScope.launch {
             clear()
-            diaries.value = getDiaries()
-            Log.d("DEBUG_DATABASE", "Clear Diaries -> find ${diaries.value?.size} Diaries")
+            initialize()
         }
     }
 
