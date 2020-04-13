@@ -16,7 +16,7 @@
         tools:context=".diary.DiaryFragment">
 
         <TextView
-            android:id="@+id/text_diary_filter"
+            android:id="@+id/text_filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -35,7 +35,7 @@
             android:entries="@{diaryViewModel.filterNames}"
             android:selectedItemPosition="@{diaryViewModel.selectedPosition}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/text_diary_filter"
+            app:layout_constraintStart_toEndOf="@+id/text_filter"
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@android:layout/activity_list_item" />
 

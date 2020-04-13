@@ -1,14 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".chart.ChartFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:layout_margin="8dp"
-        android:id="@+id/chart"
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="chartViewModel"
+            type="jp.ryuk.deglog_a01.chart.ChartViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        tools:context=".chart.ChartFragment">
 
-</FrameLayout>
+
+        <TextView
+            android:id="@+id/text_chart_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/diary_filter"
+            app:layout_constraintBottom_toBottomOf="@+id/spinner_chart_filter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/spinner_chart_filter" />
+
+        <Spinner
+            android:id="@+id/spinner_chart_filter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:entries="@{chartViewModel.filterNames}"
+            android:selectedItemPosition="@{chartViewModel.selectedPosition}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/text_chart_filter"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@android:layout/activity_list_item" />
+
+        <View
+            android:id="@+id/filter_chart_border"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/gray"
+            app:layout_constraintBottom_toTopOf="@+id/chart"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_chart_filter" />
+
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/filter_chart_border"
+            tools:layout_editor_absoluteX="8dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

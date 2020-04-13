@@ -3,10 +3,9 @@ package jp.ryuk.deglog_a01.utilities
 import android.view.View
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import jp.ryuk.deglog_a01.database.Diary
 
 @BindingAdapter("isGone")
-fun TextView.isGone(boolean: Boolean) {
+fun View.isGone(boolean: Boolean) {
     visibility = if (boolean) View.GONE else View.VISIBLE
 }
 // 名前

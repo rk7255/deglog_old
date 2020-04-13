@@ -73,6 +73,9 @@ class DiaryFragment : Fragment() {
             }
         })
 
+        /**
+         * Spinner
+         */
         binding.spinnerDiaryFilter.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
