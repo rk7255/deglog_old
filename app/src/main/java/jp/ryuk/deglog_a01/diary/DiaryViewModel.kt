@@ -19,6 +19,7 @@ class DiaryViewModel(
     var diaries = MediatorLiveData<List<Diary>>()
 
     val filterNames = MutableLiveData<List<String?>>()
+    var selectedPosition = 0
 
     init {
         initialize()

@@ -81,6 +81,7 @@ class DiaryFragment : Fragment() {
                     parent: AdapterView<*>?, view: View?, position: Int, id: Long
                 ) {
                     diaryViewModel.showDiaries(parent?.selectedItem.toString())
+                    diaryViewModel.selectedPosition = position
                 }
             }
 

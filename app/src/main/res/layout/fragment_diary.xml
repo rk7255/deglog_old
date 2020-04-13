@@ -33,6 +33,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
             android:entries="@{diaryViewModel.filterNames}"
+            android:selectedItemPosition="@{diaryViewModel.selectedPosition}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/text_diary_filter"
             app:layout_constraintTop_toTopOf="parent"
