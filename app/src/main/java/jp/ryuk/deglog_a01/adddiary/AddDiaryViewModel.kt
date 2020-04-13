@@ -7,7 +7,9 @@ import androidx.lifecycle.ViewModel
 import jp.ryuk.deglog_a01.database.*
 import jp.ryuk.deglog_a01.utilities.convertIntToString
 import jp.ryuk.deglog_a01.utilities.convertStringToInt
+import jp.ryuk.deglog_a01.utilities.convertYMDToLong
 import kotlinx.coroutines.*
+import kotlin.random.Random
 
 class AddDiaryViewModel (
     private val diaryDatabase: DiaryDatabaseDao,
@@ -119,6 +121,21 @@ class AddDiaryViewModel (
     fun clearLength() {
         length = null
         _changeDataEvent.value = true
+    }
+
+    // デバッグ用
+    fun addDummy() {
+        uiScope.launch {
+            var weight = 200
+            for (i in 0..20) {
+                val newDiary = Diary()
+                newDiary.name = selectedName
+                newDiary.date = convertYMDToLong(2020, 3, i+1)
+                weight += Random.nextInt(0, 30)
+                newDiary.weight = weight
+                insert(newDiary)
+            }
+        }
     }
 
     /**

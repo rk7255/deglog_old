@@ -22,6 +22,7 @@
     <string name="sex_hint">オス</string>
     <string name="birthday">誕生日</string>
     <string name="debug_clear_database">DBクリア</string>
+    <string name="add_dummy">ダミーの追加</string>
     <string name="date_hint">2020/01/01</string>
     <string name="diary_filter">Diary Filter :</string>
     <string name="diary">日誌</string>
