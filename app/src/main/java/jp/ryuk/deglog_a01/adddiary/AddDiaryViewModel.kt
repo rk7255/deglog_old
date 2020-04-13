@@ -27,7 +27,7 @@ class AddDiaryViewModel (
     var length: String? = null
     var memo: String? = null
 
-    /*
+    /**
      * Initialize
      */
     init {
@@ -52,7 +52,7 @@ class AddDiaryViewModel (
         }
     }
 
-    /*
+    /**
      * 名前の選択を変更したらEditTextにデータを入力
      */
     fun changeSelectedName() {
@@ -72,7 +72,7 @@ class AddDiaryViewModel (
         }
     }
 
-    /*
+    /**
      * onClick
      */
     fun addNewDiary() {
@@ -121,7 +121,7 @@ class AddDiaryViewModel (
         _changeDataEvent.value = true
     }
 
-    /*
+    /**
      *  LiveData
      */
     private var _navigateToDiary = MutableLiveData<Boolean>()
@@ -149,7 +149,7 @@ class AddDiaryViewModel (
         _changeDataEvent.value = false
     }
 
-    /*
+    /**
      * Database
      */
     private suspend fun insert(diary: Diary) {

@@ -5,12 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".chart.ChartFragment">
 
-    <TextView
-        android:textSize="40sp"
-        android:gravity="center"
+    <com.github.mikephil.charting.charts.LineChart
+        android:layout_margin="8dp"
+        android:id="@+id/chart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="THIS IS\nCHART\nFRAGMENT"
-        tools:ignore="HardcodedText" />
+        android:layout_height="match_parent"/>
 
 </FrameLayout>

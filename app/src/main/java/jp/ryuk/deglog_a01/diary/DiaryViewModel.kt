@@ -42,7 +42,7 @@ class DiaryViewModel(
     }
 
 
-    /*
+    /**
      * onClick
      */
     fun onClear() {
@@ -52,7 +52,7 @@ class DiaryViewModel(
         }
     }
 
-    /*
+    /**
      *  LiveData
      */
     private var _navigateToAddDiary = MutableLiveData<Boolean>()
@@ -75,7 +75,7 @@ class DiaryViewModel(
         _navigateToDiaryDetail.value = id
     }
 
-    /*
+    /**
      * Database
      */
 

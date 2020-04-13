@@ -35,7 +35,7 @@ class DiaryFragment : Fragment() {
         binding.diaryViewModel = diaryViewModel
         binding.lifecycleOwner = this
 
-        /*
+        /**
          * RecyclerView
          */
         val adapter = DiaryAdapter(DiaryListener { id ->
@@ -52,7 +52,7 @@ class DiaryFragment : Fragment() {
         })
 
 
-        /*
+        /**
          *  Navigation
          */
         diaryViewModel.navigateToAddDiary.observe(viewLifecycleOwner, Observer {

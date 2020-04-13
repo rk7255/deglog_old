@@ -27,7 +27,7 @@ class DiaryDetailViewModel(
         }
     }
 
-    /*
+    /**
      * LiveData
      */
     private val _navigateToDiary = MutableLiveData<Boolean>()
@@ -38,7 +38,7 @@ class DiaryDetailViewModel(
         _navigateToDiary.value = false
     }
 
-    /*
+    /**
      * Database
      */
     private suspend fun getDiary(key: Long): Diary {

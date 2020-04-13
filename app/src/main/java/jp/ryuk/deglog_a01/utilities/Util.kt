@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import java.text.SimpleDateFormat
 import java.util.*
 
-/*
+/**
  * 日付の表示設定
  */
 @SuppressLint("SimpleDateFormat")
@@ -26,7 +26,7 @@ fun convertLongToDateStringInTime(systemTime: Long): String {
         .format(systemTime).toString()
 }
 
-/*
+/**
  * 型変換
  */
 fun convertIntToString(num: Int?): String {
@@ -37,7 +37,7 @@ fun convertStringToInt(str: String?): Int? {
     return if (str.isNullOrEmpty()) null else str.toInt()
 }
 
-/*
+/**
  * 体重と体長の単位付与
  */
 fun convertWeight(weight: Int?): String? {

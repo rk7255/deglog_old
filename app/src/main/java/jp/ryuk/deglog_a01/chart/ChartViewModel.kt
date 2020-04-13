@@ -38,14 +38,16 @@ class ChartViewModel(
                 diary.weight?.let { data.add(it) }
             }
 
-
-
             Log.d("DEBUG_", "$filtered ,\n $data")
 
         }
     }
 
-    /*
+    /**
+     * chart
+     */
+
+    /**
      * Database
      */
     private suspend fun  getDiaries(): List<Diary> {

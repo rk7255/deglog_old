@@ -26,7 +26,7 @@ class AddProfileViewModel(
     var editTextBirthday: Long = System.currentTimeMillis()
 
 
-    /*
+    /**
      * onClick
      */
     fun onClear() {
@@ -51,7 +51,7 @@ class AddProfileViewModel(
         }
     }
 
-    /*
+    /**
      * DatePicker
      */
     private val calender = Calendar.getInstance()
@@ -71,7 +71,7 @@ class AddProfileViewModel(
         _showDatePickerDialog.value = false
     }
 
-    /*
+    /**
      * LiveData
      */
     private var _navigateToAddDiary = MutableLiveData<Boolean?>()
@@ -82,7 +82,7 @@ class AddProfileViewModel(
         _navigateToAddDiary.value = false
     }
 
-    /*
+    /**
      * Database
      */
     private suspend fun clear() {
